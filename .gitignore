@@ -1,0 +1,46 @@
+# .gitignore
+# Sam Harrison 2018
+# MIT License: a full version of the license is included in the LICENSE file.
+
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*.bib.bak
+*.blg
+*-blx.bib
+*.dvi
+*-eps-converted-to.pdf
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.maf
+*-mpgraph.mp
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.out
+# *.pdf
+*.pdfsync
+*.ps
+*.snm
+*.synctex.gz
+*.tex.swp
+*.toc
+*.top
+*.tui
+*.vrb
+*.xdy
+*.xml
