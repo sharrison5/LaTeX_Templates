@@ -36,7 +36,6 @@
 % http://typographica.org
 
 % Load some new fonts!
-% A combination of otfinfo and kpsewhich gives the font family name
 \RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
     \defaultfontfeatures{Ligatures=TeX} % {Numbers=Lowercase,SlashedZero}
     
@@ -57,8 +56,9 @@
     \setmonofont[Scale=MatchLowercase]{Inconsolatazi4}
     % Alternatives: Droid Sans Mono, Source Code Pro
 
-% Doesn't pseem to lay as nicely with fontfeatures as the above
-% \RequirePackage[semibold]{libertine}
+% Finding the font files / family name can be tricky. Try e.g.
+% ls "$(kpsexpand '$TEXMFDIST')/fonts/opentype"
+% otfinfo -i <path/to/font_file.otf>
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
