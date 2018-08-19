@@ -36,6 +36,7 @@
 % http://typographica.org
 
 % Load some new fonts!
+% A combination of otfinfo and kpsewhich gives the font family name
 \RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
     \defaultfontfeatures{Ligatures=TeX} % {Numbers=Lowercase,SlashedZero}
     
@@ -48,10 +49,13 @@
     % But in Type1 format so can't load via fontspec
     \RequirePackage[full]{textcomp}
     \RequirePackage[swashQ]{garamondx} % Old style figures, fancy Q
+    % https://github.com/octaviopardo/EBGaramond12
     
-    \setsansfont{Linux Biolinum O}
+    \setsansfont{URW Classico}
+    % Alternatives: IBM Plex Sans, Lato, Linux Biolinum O, Rosario
     
-    \setmonofont[Scale=MatchLowercase]{Deja Vu Sans Mono}
+    \setmonofont[Scale=MatchLowercase]{Inconsolatazi4}
+    % Alternatives: Droid Sans Mono, Source Code Pro
 
 % Doesn't pseem to lay as nicely with fontfeatures as the above
 % \RequirePackage[semibold]{libertine}
