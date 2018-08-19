@@ -1,0 +1,95 @@
+% basics.sty
+% Sam Harrison 2018
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package info {{{
+
+% http://en.wikibooks.org/wiki/LaTeX/Modular_Documents
+% http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+% http://www.latex-project.org/guides/clsguide.pdf
+
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{basics}[2018/08/19 Custom LuaTeX style]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Localisation {{{
+
+% Language support
+\RequirePackage[british]{babel}
+
+% Quotes conforming to regional conventions
+\RequirePackage{csquotes}   % \enquote{Quoted text}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts {{{
+
+% Load some new fonts!
+\RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
+    \defaultfontfeatures{Ligatures=TeX} % {Numbers=Lowercase,SlashedZero}
+    \setmainfont{Linux Libertine O}%    % Load with the semibold variant
+        [BoldFont={LinLibertine_RZ.otf},
+         BoldItalicFont={LinLibertine_RZI.otf}]
+    \setsansfont{Linux Biolinum O}
+    \setmonofont[Scale=MatchLowercase]{Deja Vu Sans Mono}
+
+% Doesn't pseem to lay as nicely with fontfeatures as the above
+% \RequirePackage[semibold]{libertine}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typography {{{
+
+\RequirePackage{microtype}  % Making typesetting even better!
+
+\RequirePackage{setspace}   % Inter-line spacing
+    % \singlespacing \onehalfspacing \doublespacing
+
+\RequirePackage[normalem]{ulem} % Underlining etc: \uline{}, \sout{}
+
+\RequirePackage{metalogo}   % \LuaLaTeX etc
+
+\RequirePackage{siunitx}    % Proper typesetting of numbers and units
+\sisetup{
+    detect-all,                 % Detect text v maths, font weight, shape etc
+    binary-units=true,          % \bit and \byte; \kibi, \mebi, etc
+    group-digits = integer,     % Only group before decimal point
+    group-separator = {,},
+    group-minimum-digits = 4    % Group e.g. 1,500
+}
+
+% \eg, \ie and \etc to deal with spacing
+% https://tex.stackexchange.com/a/15017
+% https://tex.stackexchange.com/a/2230
+% You should consider \@. a "sentence-ending period" and .\@ an
+% "abbreviation period"
+\usepackage{xspace}
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\cf}{cf.\@\xspace}
+\newcommand*{\etc}{%
+    \@ifnextchar{.}%
+        {etc}%
+        {etc.\@\xspace}%
+}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful extra packages {{{
+
+\RequirePackage{enumitem}   % Customising enumerate, itemize etc
+
+\RequirePackage{blindtext}  % Lorem ipsum style filler text
+
+\RequirePackage{pdflscape}  % Landscape pages: \begin{landscape} ... \end{landscape}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
