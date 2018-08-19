@@ -13,6 +13,27 @@ latexmk -lualatex -outdir=Templates/ Templates/Article.tex
 ```
 
 --------------------
+### Installing extra fonts
+
+The default serif font is *GaramondNo8 with expert features* via the
+`garamondx` package. The `getnonfreefonts` script can be used to install the
+extra fonts which cannot be bundled with TeX Live. To do this use the
+following:
+```
+# From https://tex.stackexchange.com/a/47504
+
+# Install script
+curl -O http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+rm install-getnonfreefonts
+
+# And add fonts
+getnonfreefonts --help
+sudo getnonfreefonts --sys --lsfonts
+sudo getnonfreefonts --sys <font>|--all
+```
+
+--------------------
 
 ###### Colophon
 Sam Harrison, 2018, MIT License.
