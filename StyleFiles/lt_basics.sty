@@ -82,21 +82,6 @@
     group-minimum-digits = 4    % Group e.g. 1,500
 }
 
-% \eg, \ie and \etc to deal with spacing
-% https://tex.stackexchange.com/a/15017
-% https://tex.stackexchange.com/a/2230
-% You should consider \@. a "sentence-ending period" and .\@ an
-% "abbreviation period"
-\usepackage{xspace}
-\newcommand*{\eg}{e.g.\@\xspace}
-\newcommand*{\ie}{i.e.\@\xspace}
-\newcommand*{\cf}{cf.\@\xspace}
-\newcommand*{\etc}{%
-    \@ifnextchar{.}%
-        {etc}%
-        {etc.\@\xspace}%
-}
-
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Colours {{{
@@ -118,6 +103,56 @@
         leftmargin=*,           % Adjust left margin based on label size
         rightmargin=\parindent, % Make narrower on RHS for balance
         font=\sffamily}         % Labels have different font
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful extra commands {{{
+
+% \eg, \ie and \etc to deal with spacing
+% https://tex.stackexchange.com/a/15017
+% https://tex.stackexchange.com/a/2230
+% You should consider \@. a "sentence-ending period" and .\@ an
+% "abbreviation period"
+\usepackage{xspace}
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+\newcommand*{\cf}{cf.\@\xspace}
+\newcommand*{\etc}{%
+    \@ifnextchar{.}%
+        {etc}%
+        {etc.\@\xspace}%
+}
+
+% Command to change the margins for a short section
+% \begin{changemargin}{<leftindent>}{<rightindent>}
+%    ...
+% \end{changemargin}
+% https://texfaq.org/FAQ-chngmargonfly
+\newenvironment{changemargin}[2]%
+    {\begin{list}{}{%
+            \setlength{\leftmargin}{#1}%
+            \setlength{\rightmargin}{#2}%
+            \setlength{\listparindent}{\parindent}%
+            \setlength{\itemindent}{\parindent}%
+            \setlength{\parsep}{\parskip}%
+        }\item[]}%
+    {\end{list}}
+
+% Command for a quote environment with an author
+%\begin{aquote}{Author}
+%     ...
+%\end{aquote}
+% https://tex.stackexchange.com/a/13761
+\newcommand{\signed}[1]{
+    \leavevmode\unskip
+    \nobreak\hfil\penalty50\hskip2em\hbox{}\nobreak\hfil #1
+    \parfillskip=0pt \finalhyphendemerits=0 \endgraf}
+% Have to save argument - not passed to \end{}
+% https://tex.stackexchange.com/q/17036
+% Note also have to format before saving - not sure why
+\newenvironment{aquote}[1]
+    {\newsavebox{\authorbox} \savebox{\authorbox}{\textit{#1}} \begin{quote}}
+    {\signed{\usebox{\authorbox}} \end{quote}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

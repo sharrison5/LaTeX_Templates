@@ -98,11 +98,8 @@
 
 \texttt{\blindtext}
 
-
-\blindtext
-
-%\begin{itemize}
-\begin{enumerate}[label=\Roman*., widest*=4]%, itemindent=\parindent]
+\begin{itemize}
+%\begin{enumerate}[label=\Roman*., widest*=4]%, itemindent=\parindent]
 
     \item \uline{1234567\sout{890}} \num{12345} \SI{67.8956}{\um/\s^2}
         \SI{9999}{\hertz} \ang{90}
@@ -111,15 +108,20 @@
 
     \item \enquote{blah \enquote{blah}} blah
 
-    \item \blindtext
-
     \item \eg \ie \cf \etc
 
     \item Quoi?
 
-%\end{itemize}
-\end{enumerate}
+\end{itemize}
+%\end{enumerate}
 
+\blindtext
+\begin{changemargin}{\parindent}{\parindent}
+    \blindtext
+\end{changemargin}
+\begin{aquote}{Cicero}
+    \blindtext
+\end{aquote}
 \blindtext
 
 % }}}
