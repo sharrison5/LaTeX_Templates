@@ -16,7 +16,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/08/20 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/08/22 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,6 +106,18 @@
 % Some useful extra colours
 \definecolor{CambridgeBlue}{RGB}{163,193,173}
 \definecolor{OxfordBlue}{RGB}{0,33,71}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Customising enumerate, itemize etc {{{
+
+\RequirePackage{enumitem}
+    % Set global options
+    \setlist{
+        labelindent=\parindent, % Labels aligned with para indent
+        leftmargin=*,           % Adjust left margin based on label size
+        rightmargin=\parindent, % Make narrower on RHS for balance
+        font=\sffamily}         % Labels have different font
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
