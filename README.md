@@ -3,13 +3,15 @@
 A collection of LaTeX templates and style files, all meant for use with the
 [LuaTeX](http://www.luatex.org/) engine.
 
-LuaTeX is used because of its Unicode and font support (via `fontspec` and
-`unicode-math`), and preferred over XeTeX because of the more advanced features
-available in the `microtype` package.
+LuaTeX is used because of its Unicode and font support (via
+[`fontspec`](https://ctan.org/pkg/fontspec)
+and [`unicode-math`](https://ctan.org/pkg/unicode-math)), and preferred over
+XeTeX because of the more advanced features available in the
+[`microtype`](https://ctan.org/pkg/microtype) package.
 
 To compile the examples:
 ```
-latexmk -lualatex -outdir=Templates/ Templates/Article.tex
+latexmk -lualatex -cd Templates/Article.tex
 ```
 
 --------------------
