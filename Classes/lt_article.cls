@@ -44,39 +44,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Header & footer formatting {{{
 
-%Commands to get header text
-%http://stackoverflow.com/questions/2833954/how-do-i-create-a-command-like-title-in-latex
-\def\@header{} %Can put a default header in these braces if required
-\newcommand{\header}[1]{
-  \def\@header{#1}
-}
+% Commands to get header text, in the same way as e.g. \title{}
+% https://stackoverflow.com/q/2833954
+% \header{blah} stores blah as the output of \@header{}
+\newcommand{\header}[1]{\renewcommand{\@header}{#1}}
+\newcommand{\@header}{}   % Put the default header in these braces if required
 
 \RequirePackage{fancyhdr}
-% Page styles:
-%     empty - nowt
-%     plain - just page number
-%     headings - chapter names etc
-%     myheadings - user
-%     fancy - as defined for all but plain pages
-%     fancyplain - defines a generic and plain style
+\pagestyle{fancy}   % Use the fancy style (redefined below)
+% Default LaTeX page styles:
+%     empty      - nowt
+%     plain      - just page number, set by maketitle
+%     headings   - chapter names etc
+%     myheadings - some user customisation possible
 
-\pagestyle{fancy} % Use the fancy style
-% Set the page style for the style we have selected
-\fancyhf{} % clear all header and footer fields
-\rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
-\cfoot{\thepage}
-\setlength{\headheight}{15.2pt}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
+% Define the main page style
+%\fancypagestyle{fancy}{    % This breaks things
+    \fancyhf{}  % Clear all header/footer fields
+    \rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
+    \lhead{\sffamily \footnotesize \textcolor{lightgray}{\rightmark}}
+    \renewcommand{\headrulewidth}{0.75pt}
+    \cfoot{\thepage}
+%}
 
-% And redefine the plain style
+% And redefine the plain style for the title page
 \fancypagestyle{plain}{
-\fancyhf{} % clear all header and footer fields
-%\rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
-\cfoot{\thepage}
-\setlength{\headheight}{15.2pt}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
+    \fancyhf{}  % Clear all header/footer fields
+    \rhead{\sffamily \textcolor{lightgray}{\@header}}
+    \renewcommand{\headrulewidth}{0.75pt}
+    \cfoot{\thepage}
 }
 
 % }}}
