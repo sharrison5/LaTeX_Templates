@@ -24,9 +24,8 @@ the classes and style files can actually be found. For more information see
 --------------------
 ### Installing extra fonts
 
-The default serif font is *GaramondNo8 with expert features* via the
-`garamondx` package. The `getnonfreefonts` script can be used to install the
-extra fonts which cannot be bundled with TeX Live. To do this use the
+The `getnonfreefonts` script can be used to install some extra fonts which
+cannot be bundled with TeX Live (e.g. Garamond No. 8). To do this use the
 following:
 ```
 # From https://tex.stackexchange.com/a/47504
