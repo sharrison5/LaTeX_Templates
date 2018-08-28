@@ -38,27 +38,29 @@
 
 % Load some new fonts!
 \RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
-    \defaultfontfeatures{Ligatures=TeX} % {Numbers=Lowercase,SlashedZero}
-    
+    \defaultfontfeatures{Ligatures=TeX, Numbers=Proportional}
+    % Alternatives: {Numbers=Lowercase}
+
     \setmainfont{libertinusserif}[      % Family name: Libertinus Serif
         Extension      = .otf,
         UprightFont    = *-regular,
         ItalicFont     = *-italic,
         BoldFont       = *-semibold,
         BoldItalicFont = *-semibolditalic]
-    % Alternatives: Cochineal, Junicode, TeX Gyre Pagella, TeX Gyre Schola
-    
+    % Alternatives: STIX Two Text [STIX Two Math], TeX Gyre Schola [TeX Gyre Schola Math]
+    % Without maths: Cochineal, Garamond (see below), Junicode
+
     % garamondx requires the getnonfreefonts script (see README.md)
     % But in Type1 format so can't load via fontspec
     %\RequirePackage[full]{textcomp}
     %\RequirePackage[swashQ]{garamondx} % Old style figures, fancy Q
     % https://github.com/octaviopardo/EBGaramond12
-    
+
     \setsansfont{Lato}[
         BoldFont={Lato-Semibold.ttf},
         BoldItalicFont={Lato-SemiboldItalic.ttf}]
     % Alternatives: IBM Plex Sans, Linux Biolinum O, Rosario, URW Classico
-    
+
     \setmonofont{Inconsolatazi4}[
         Scale=MatchLowercase]
     % Alternatives: Droid Sans Mono, Source Code Pro
