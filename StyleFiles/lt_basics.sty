@@ -16,7 +16,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/08/26 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/08/28 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,27 +33,34 @@
 % Fonts {{{
 
 % http://www.tug.dk/FontCatalogue/
+% https://math.ucsd.edu/~msharpe/RecentTexFonts.pdf
 % http://typographica.org
 
 % Load some new fonts!
 \RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
     \defaultfontfeatures{Ligatures=TeX} % {Numbers=Lowercase,SlashedZero}
     
-    %\setmainfont{Linux Libertine O}%    % Load with the semibold variant
-    %    [BoldFont={LinLibertine_RZ.otf},
-    %     BoldItalicFont={LinLibertine_RZI.otf}]
-    % Alternatives: Cochineal, EB Garamond, Junicode, TeX Gyre Pagella
+    \setmainfont{libertinusserif}[      % Family name: Libertinus Serif
+        Extension      = .otf,
+        UprightFont    = *-regular,
+        ItalicFont     = *-italic,
+        BoldFont       = *-semibold,
+        BoldItalicFont = *-semibolditalic]
+    % Alternatives: Cochineal, Junicode, TeX Gyre Pagella, TeX Gyre Schola
     
     % garamondx requires the getnonfreefonts script (see README.md)
     % But in Type1 format so can't load via fontspec
-    \RequirePackage[full]{textcomp}
-    \RequirePackage[swashQ]{garamondx} % Old style figures, fancy Q
+    %\RequirePackage[full]{textcomp}
+    %\RequirePackage[swashQ]{garamondx} % Old style figures, fancy Q
     % https://github.com/octaviopardo/EBGaramond12
     
-    \setsansfont{URW Classico}
-    % Alternatives: IBM Plex Sans, Lato, Linux Biolinum O, Rosario
+    \setsansfont{Lato}[
+        BoldFont={Lato-Semibold.ttf},
+        BoldItalicFont={Lato-SemiboldItalic.ttf}]
+    % Alternatives: IBM Plex Sans, Linux Biolinum O, Rosario, URW Classico
     
-    \setmonofont[Scale=MatchLowercase]{Inconsolatazi4}
+    \setmonofont{Inconsolatazi4}[
+        Scale=MatchLowercase]
     % Alternatives: Droid Sans Mono, Source Code Pro
 
 % Finding the font files / family name can be tricky. Try e.g.
