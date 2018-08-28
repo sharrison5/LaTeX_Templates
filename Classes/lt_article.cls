@@ -24,3 +24,25 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section heading formatting {{{
+
+%\RequirePackage[compact]{titlesec}
+\RequirePackage{titlesec}
+% For defaults (see "Standard Classes" appendix of titlesec manual)
+
+%Modify the titleformat so sections are printed in blue
+%Equivalent format to using \RequirePackage[small]{titlesec}
+%\titleformat*{\section}{\sffamily \large \bfseries \color{SteelBlue4}}
+\titleformat*{\section}{\sffamily \scshape \Large \color{SteelBlue4}}
+
+%\titleformat*{\subsection}{\sffamily \normalsize \bfseries \color{SteelBlue4}}
+\titleformat*{\subsection}{\sffamily \large \color{SteelBlue4}}
+
+%\titleformat*{\subsubsection}{\sffamily \normalsize \bfseries}
+\titleformat*{\subsubsection}{\sffamily \normalsize \itshape}
+
+%Change caption spacing slightly
+%\addtolength{\belowcaptionskip}{-1em}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
