@@ -11,8 +11,15 @@ XeTeX because of the more advanced features available in the
 
 To compile the examples:
 ```
+cd LateX_Templates/
+export TEXINPUTS="$PWD/StyleFiles:$PWD/Classes:$TEXINPUTS"
 latexmk -lualatex -cd Templates/Article.tex
 ```
+
+Note that to use the templates we need to set the `TEXINPUTS` variable so that
+the classes and style files can actually be found. For more information see
+[here](https://texfaq.org/FAQ-tempinst) and
+[here](https://stackoverflow.com/a/4483042).
 
 --------------------
 ### Installing extra fonts
