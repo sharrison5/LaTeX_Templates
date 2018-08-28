@@ -26,23 +26,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section heading formatting {{{
 
-%\RequirePackage[compact]{titlesec}
-\RequirePackage{titlesec}
+% Use sans-serif font for headings
+\if@twocolumn
+    % And use more compact spacing if in two column mode
+    \RequirePackage[sf,compact]{titlesec}
+\else
+    \RequirePackage[sf]{titlesec}
+\fi
+
+% And add some colour
 % For defaults (see "Standard Classes" appendix of titlesec manual)
+\titleformat*{\section}      {\sffamily \Large \color{SteelBlue4}}
+\titleformat*{\subsection}   {\sffamily \large \color{SteelBlue4}}
+\titleformat*{\subsubsection}{\sffamily \normalsize}
 
-%Modify the titleformat so sections are printed in blue
-%Equivalent format to using \RequirePackage[small]{titlesec}
-%\titleformat*{\section}{\sffamily \large \bfseries \color{SteelBlue4}}
-\titleformat*{\section}{\sffamily \scshape \Large \color{SteelBlue4}}
 
-%\titleformat*{\subsection}{\sffamily \normalsize \bfseries \color{SteelBlue4}}
-\titleformat*{\subsection}{\sffamily \large \color{SteelBlue4}}
 
-%\titleformat*{\subsubsection}{\sffamily \normalsize \bfseries}
-\titleformat*{\subsubsection}{\sffamily \normalsize \itshape}
 
-%Change caption spacing slightly
-%\addtolength{\belowcaptionskip}{-1em}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
