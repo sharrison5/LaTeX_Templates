@@ -24,6 +24,30 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title formatting {{{
+
+\RequirePackage{titling}
+\RequirePackage{changepage}
+
+%Format the title
+\pretitle{\begin{adjustwidth}{2em}{} \begin{flushright} \sffamily \LARGE}
+\posttitle{\end{flushright} \end{adjustwidth} \vspace{1em}}
+
+%\preauthor{\noindent \large \sffamily}
+%\postauthor{\par}
+
+\preauthor{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily \large}
+\postauthor{\end{flushright} \end{adjustwidth} \vspace{1em}}
+%\postauthor{\hfill}
+
+\predate{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily}
+\postdate{\end{flushright} \end{adjustwidth}}
+
+%Adjust title spacing
+\setlength{\droptitle}{-4.0em}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section heading formatting {{{
 
 % Use sans-serif font for headings
