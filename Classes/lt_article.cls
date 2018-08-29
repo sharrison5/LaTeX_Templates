@@ -28,22 +28,19 @@
 
 \RequirePackage{titling}
 
-%Format the title
+% Move title upwards
+\setlength{\droptitle}{-4.0em}
+
+% And apply formatting
+% Use adjustwidth to stop title/authors filling all the way to the left
 \pretitle{\begin{adjustwidth}{2em}{} \begin{flushright} \sffamily \LARGE}
 \posttitle{\end{flushright} \end{adjustwidth} \vspace{1em}}
 
-%\preauthor{\noindent \large \sffamily}
-%\postauthor{\par}
-
 \preauthor{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily \large}
-\postauthor{\end{flushright} \end{adjustwidth} \vspace{1em}}
-%\postauthor{\hfill}
+\postauthor{\end{flushright} \end{adjustwidth}}
 
 \predate{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily}
-\postdate{\end{flushright} \end{adjustwidth}}
-
-%Adjust title spacing
-\setlength{\droptitle}{-4.0em}
+\postdate{\end{flushright} \end{adjustwidth} \vspace{1em}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
