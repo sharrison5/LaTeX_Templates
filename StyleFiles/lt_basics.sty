@@ -16,7 +16,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/08/28 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/08/29 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,6 +79,13 @@
 \RequirePackage{setspace}   % Inter-line spacing
     % \singlespacing \onehalfspacing \doublespacing
 
+\RequirePackage[strict]{changepage}
+% Includes command to change the margins for a short section
+% \begin{adjustwidth}{<leftindent>}{<rightindent>}
+%    ...
+% \end{adjustwidth}
+% https://texfaq.org/FAQ-chngmargonfly
+
 \RequirePackage[normalem]{ulem} % Underlining etc: \uline{}, \sout{}
 
 \RequirePackage{metalogo}   % \LuaLaTeX etc
@@ -132,21 +139,6 @@
         {etc}%
         {etc.\@\xspace}%
 }
-
-% Command to change the margins for a short section
-% \begin{changemargin}{<leftindent>}{<rightindent>}
-%    ...
-% \end{changemargin}
-% https://texfaq.org/FAQ-chngmargonfly
-\newenvironment{changemargin}[2]%
-    {\begin{list}{}{%
-            \setlength{\leftmargin}{#1}%
-            \setlength{\rightmargin}{#2}%
-            \setlength{\listparindent}{\parindent}%
-            \setlength{\itemindent}{\parindent}%
-            \setlength{\parsep}{\parskip}%
-        }\item[]}%
-    {\end{list}}
 
 % Command for a quote environment with an author
 %\begin{aquote}{Author}

@@ -27,7 +27,6 @@
 % Title formatting {{{
 
 \RequirePackage{titling}
-\RequirePackage{changepage}
 
 %Format the title
 \pretitle{\begin{adjustwidth}{2em}{} \begin{flushright} \sffamily \LARGE}
