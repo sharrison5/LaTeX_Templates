@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/08/28 Custom article format]
+\ProvidesClass{lt_article}[2018/08/29 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,11 +58,15 @@
 %     headings   - chapter names etc
 %     myheadings - some user customisation possible
 
+% Redefine \sectionmark so that it puts the section info in \leftmark
+% Must be after \pagestyle{fancy} so defaults are set
+\renewcommand{\sectionmark}[1]{\markboth{\thesection.~#1}{}}
+
 % Define the main page style
 %\fancypagestyle{fancy}{    % This breaks things
     \fancyhf{}  % Clear all header/footer fields
     \rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
-    \lhead{\sffamily \footnotesize \textcolor{lightgray}{\rightmark}}
+    \lhead{\sffamily \textcolor{lightgray}{\leftmark}}
     \renewcommand{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 %}
