@@ -16,7 +16,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/08/29 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/09/01 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,11 +80,7 @@
     % \singlespacing \onehalfspacing \doublespacing
 
 \RequirePackage[strict]{changepage}
-% Includes command to change the margins for a short section
-% \begin{adjustwidth}{<leftindent>}{<rightindent>}
-%    ...
-% \end{adjustwidth}
-% https://texfaq.org/FAQ-chngmargonfly
+% Use adjustwidth environment to temporarily change margins
 
 \RequirePackage[normalem]{ulem} % Underlining etc: \uline{}, \sout{}
 
@@ -134,10 +130,10 @@
 \newcommand*{\eg}{e.g.\@\xspace}
 \newcommand*{\ie}{i.e.\@\xspace}
 \newcommand*{\cf}{cf.\@\xspace}
-\newcommand*{\etc}{%
-    \@ifnextchar{.}%
-        {etc}%
-        {etc.\@\xspace}%
+\newcommand*{\etc}{
+    \@ifnextchar{.}
+        {etc}
+        {etc.\@\xspace}
 }
 
 % Command for a quote environment with an author
