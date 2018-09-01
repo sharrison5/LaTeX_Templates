@@ -40,7 +40,12 @@
 \postauthor{\end{flushright} \end{adjustwidth}}
 
 \predate{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily}
-\postdate{\end{flushright} \end{adjustwidth} \vspace{1em}}
+\postdate{\end{flushright} \end{adjustwidth}} % \vspace{1em}}
+
+% And change affiliation symbols to letters
+\thanksmarkseries{alph}
+\thanksheadextra{\sffamily}{}
+\thanksfootextra{\sffamily}{}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
