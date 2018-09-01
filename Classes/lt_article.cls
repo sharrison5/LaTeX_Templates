@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/08/29 Custom article format]
+\ProvidesClass{lt_article}[2018/09/01 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,6 +59,18 @@
 \titleformat*{\section}      {\sffamily \Large \color{SteelBlue4}}
 \titleformat*{\subsection}   {\sffamily \large \color{SteelBlue4}}
 \titleformat*{\subsubsection}{\sffamily \normalsize}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract formatting {{{
+
+\RequirePackage[runin]{abstract}
+
+%\renewcommand{\absnamepos}{flushleft}
+%\setlength{\abstitleskip}{0.0em}
+\AtBeginDocument{\setlength{\abstitleskip}{-\absparindent}}
+\renewcommand{\abstractnamefont}{\sffamily \large \color{SteelBlue4}}
+\renewcommand{\abstracttextfont}{\sffamily \small}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
