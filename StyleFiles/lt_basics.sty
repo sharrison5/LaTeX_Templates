@@ -16,7 +16,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/09/01 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2048/09/04 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,6 +94,9 @@
     group-separator = {,},
     group-minimum-digits = 4    % Group e.g. 1,500
 }
+
+% Better fractions (math and text mode)
+\RequirePackage{xfrac}      % \sfrac{1}{2}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

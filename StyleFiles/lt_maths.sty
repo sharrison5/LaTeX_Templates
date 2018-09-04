@@ -18,18 +18,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages {{{
 
-%Generic improvements to math mode e.g. define new \sin, \lim etc
+% Various improvements to math mode
 \RequirePackage{amsmath}
-
-%Extra mathematical symbols e.g.\mathbb{ }
-\RequirePackage{amssymb}
 
 % Better delimiter spacing with \mleft, \mright instead of \left, \right
 \RequirePackage{mleftright}
-
-% Better diagonal fractions? Maybe?
-\RequirePackage{xfrac}      % \sfrac{1}{2}
-\RequirePackage{nicefrac}   % \nicefrac{1}{2}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,12 +31,20 @@
 % Has to be the last maths package loaded
 \RequirePackage[math-style=ISO, bold-style=ISO]{unicode-math}
     \setmathfont{Libertinus Math}
+% See https://tex.stackexchange.com/q/425098 for font examples
+
+% ISO Standard:
+% https://www.iso.org/standard/31887.html
+% https://nickhigham.wordpress.com/2016/01/28/typesetting-mathematics-according-to-the-iso-standard/
+% In short:
+% Italic: variables, generic functions (e.g. f(x))
+% Roman: constants, fixed functions, operators (e.g., e,i,pi; sin,exp; +,d)
 
 % Shorter aliases for bold
 % \bs{ } for bold symbols (i.e. variables)
-\newcommand{\bs}[1]{\ensuremath{\symbf{#1}}}
+\newcommand{\bs}[1]{\symbf{#1}}
 % \bt{ } for bold text (i.e. operators)
-\newcommand{\bt}[1]{\ensuremath{\mathbf{#1}}}
+\newcommand{\bt}[1]{\mathbf{#1}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
