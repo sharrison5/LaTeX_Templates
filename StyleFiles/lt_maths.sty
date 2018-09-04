@@ -48,3 +48,72 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definitions {{{
+
+% Operators
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\DeclareMathOperator{\transpose}{T}
+\DeclareMathOperator{\vecOp}{vec}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\deltaFunc}{\mupdelta}
+\DeclareMathOperator{\gammaFunc}{\mupGamma}
+\newcommand{\multGammaFunc}[1]{\ensuremath{\operatorname{ \gammaFunc_{\symit{#1}} }}}
+\DeclareMathOperator{\psiFunc}{\muppsi}
+\DeclareMathOperator{\digammaFunc}{\muppsi}
+\newcommand{\multDigammaFunc}[1]{\ensuremath{\operatorname{ \digammaFunc_{\symit{#1}} }}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\artanh}{artanh}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\diag}{diag}
+
+% Probability
+\DeclareMathOperator{\p}{p}
+\DeclareMathOperator{\q}{q}
+\DeclareMathOperator{\E}{E}
+\DeclareMathOperator{\KL}{D_{KL}}
+
+% Distributions
+\DeclareMathOperator{\betaDist}{\mupbeta}
+\DeclareMathOperator{\gammaDist}{\mupGamma}
+\DeclareMathOperator{\deltaDist}{\mupdelta}
+%\DeclareMathOperator{\normalDist}{\symscr{N}}
+%\DeclareMathOperator{\matrixNormalDist}{\mathscr{MN}}
+\DeclareMathOperator{\dirichletDist}{Dir}
+%\DeclareMathOperator{\wishartDist}{\symscr{W}}
+%\newcommand{\wishartDist}[1]{\ensuremath{\operatorname{ \symscr{W}_{\symit{#1}} }}}
+\newcommand{\wishartDist}[1]{\ensuremath{\symscr{W}_{\symit{#1}}}}
+% https://tex.stackexchange.com/q/410456
+\newcommand{\normalDist}{\mathcal{N}}
+\newcommand{\matrixNormalDist}{\mathcal{MN}}
+
+
+% Function: something ( something )
+\newcommand{\func}[2]{\ensuremath{#1 \bigl( #2 \bigr)}}
+\newcommand{\bigFunc}[2]{\ensuremath{#1 \mleft( #2 \mright)}}
+
+% Distribution: something ( something )
+\newcommand{\dist}[2]{\ensuremath{ \func{#1}{#2} }}
+% Conditional distribution: something ( something | something )
+%\newcommand{\cDist}[3]{\ensuremath{\func{#1}{#2 \, \big\vert \, #3}}}
+\newcommand{\cDist}[3]{\ensuremath{\func{#1}{#2 \big\vert #3}}}
+
+% Expectation notation: < something >
+\newcommand{\expec}[1]{\ensuremath{\bigl\langle #1 \bigr\rangle}}
+\newcommand{\expecWRT}[2]{\ensuremath{\bigl\langle #1 \bigr\rangle_{#2}}}
+
+% KL divergence: Dkl ( something || something )
+\newcommand{\DKL}[2]{\ensuremath{\KL \Bigl( #1 \,\Big\Vert\, #2 \Bigr)}}
+
+% Determinant: | something |
+\newcommand{\determinant}[1]{\ensuremath{\mathopen{}| #1 \mathclose{}|}}
+\newcommand{\logdet}[1]{\ensuremath{\func{ \ln }{ \determinant{ #1 } }}}
+
+% Log: ln( something )
+\newcommand{\lnFunc}[1]{\ensuremath{\func{ \ln }{ #1 }}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
