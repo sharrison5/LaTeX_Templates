@@ -1,0 +1,49 @@
+% lt_maths.sty
+% Sam Harrison 2018
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package info {{{
+
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lt_maths}[2018/09/04 Mathematics style and commands]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages {{{
+
+%Generic improvements to math mode e.g. define new \sin, \lim etc
+\RequirePackage{amsmath}
+
+%Extra mathematical symbols e.g.\mathbb{ }
+\RequirePackage{amssymb}
+
+% Better delimiter spacing with \mleft, \mright instead of \left, \right
+\RequirePackage{mleftright}
+
+% Better diagonal fractions? Maybe?
+\RequirePackage{xfrac}      % \sfrac{1}{2}
+\RequirePackage{nicefrac}   % \nicefrac{1}{2}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set maths style and font {{{
+
+% Has to be the last maths package loaded
+\RequirePackage[math-style=ISO, bold-style=ISO]{unicode-math}
+    \setmathfont{Libertinus Math}
+
+% Shorter aliases for bold
+% \bs{ } for bold symbols (i.e. variables)
+\newcommand{\bs}[1]{\ensuremath{\symbf{#1}}}
+% \bt{ } for bold text (i.e. operators)
+\newcommand{\bt}[1]{\ensuremath{\mathbf{#1}}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
