@@ -57,17 +57,20 @@
 % https://tex.stackexchange.com/a/34825
 
 % Differentiation: \der{x} and \pder{x}
-\newcommand{\der}[1]{\operatorname{d\!}{}#1}
+\newcommand{\der}[1]{\operatorname{d\!} {#1}}
 % https://tex.stackexchange.com/a/17894A
 % The {} are needed to force insertion of a thin space
-\newcommand{\pder}[1]{\mathop{\kern0pt \partial\!}{}#1}
+\newcommand{\pder}[1]{\mathop{\kern0pt \partial\!} {#1}}
 % Similar in spirit, but non-latin characters can be temperamental when
 % changing to the operator font
 % https://tex.stackexchange.com/a/41267
 % https://tex.stackexchange.com/a/84308
 % https://tex.stackexchange.com/q/410456
+\newcommand{\del}{\mathop{\kern0pt \nabla\!} {}}
+% del/nabla doesn't take an argument as we often want a subscript
 
 % Useful functions
+\DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\const}{const}
@@ -93,6 +96,7 @@
 % Probability
 \DeclareMathOperator{\E}{E}
 \DeclareMathOperator{\KL}{D_{KL}}
+\DeclareMathOperator{\FreeEnergy}{\symcal{F}}
 
 % Distributions
 \DeclareMathOperator{\betaDist}{\mupbeta}
@@ -107,34 +111,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Commands {{{
 
-% Brackets:
-% 5(x + y) + c:      grouping expressions
-% f \bigl( x \bigr): functions
-% f \Bigl( g \Bigr): functions of functions
-
 % Function: something ( something )
-\newcommand{\func}[2]{#1 \bigl( #2 \bigr)}
+\newcommand{\func}[2]{#1 ( #2 )}
+\newcommand{\Func}[2]{#1 \bigl( #2 \bigr)}
 \newcommand{\bigFunc}[2]{#1 \mleft( #2 \mright)}
 
 % Determinant: | something |
 \newcommand{\determinant}[1]{\lvert #1 \rvert}
-\newcommand{\logdet}[1]{\func{ \ln }{ \determinant{ #1 } }}
+\newcommand{\logdet}[1]{\Func{\ln}{\determinant{ #1 }}}
 
 % Distribution: something ( something )
 \newcommand{\dist}[2]{\func{#1}{#2}}
 % Conditional distribution: something ( something | something )
 \newcommand{\cDist}[3]{\func{#1}{#2 \vert #3}}
+% Parameterised distribution: something ( something ; parameters )
+\newcommand{\pDist}[3]{\func{#1}{#2 ; #3}}
 
 % Expectation notation: < something >
-% Reserve the right to redefine this to E [ something ]
-\newcommand{\expec}[1]{\bigl\langle #1 \bigr\rangle}
-\newcommand{\expecWRT}[2]{\bigl\langle #1 \bigr\rangle_{#2}}
+%\newcommand{\expec}[1]{\bigl\langle #1 \bigr\rangle}
+%\newcommand{\expecWRT}[2]{\bigl\langle #1 \bigr\rangle_{#2}}
+\newcommand{\expec}[1]{\E \bigl[ #1 \bigr]}
+\newcommand{\expecWRT}[2]{\E_{#2} \bigl[ #1 \bigr]}
 
 % KL divergence: Dkl ( something || something )
-\newcommand{\DKL}[2]{\KL \Bigl( #1 \big\Vert #2 \Bigr)}
+\newcommand{\DKL}[2]{\Func{\KL}{#1 \,\big\Vert\, #2}}
 
 % Useful specific overloads
-\newcommand{\lnFunc}[1]{\func{ \ln }{ #1 }}
+\newcommand{\lnFunc}[1]{\Func{\ln}{#1}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
