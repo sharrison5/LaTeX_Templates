@@ -102,8 +102,8 @@
 % Define the main page style
 %\fancypagestyle{fancy}{    % This breaks things
     \fancyhf{}  % Clear all header/footer fields
-    \rhead{ \sffamily \textcolor{SteelBlue4}{\@header} }
-    \lhead{ \sffamily \textcolor{lightgray}{\nouppercase{\leftmark}} }
+    \rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
+    \lhead{\sffamily \textcolor{lightgray}{\nouppercase{\leftmark}}}
     \renewcommand{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 %}
