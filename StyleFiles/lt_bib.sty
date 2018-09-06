@@ -1,0 +1,106 @@
+% lt_bib.sty
+% Sam Harrison 2018
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package info {{{
+
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lt_bib}[2018/09/06 Bibliography formatting]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages {{{
+
+\newcommand{\href}[2]{#2}
+
+\RequirePackage[
+        backend=biber,
+        %bibstyle=numeric, % Citations are defined by numbers
+        %citestyle=numeric-comp, % Compress numbers when multiple references are given to e.g. [1-3,5]
+        %sorting=none, % Print in citation order rather than sorting
+        %sortcites=true, % Sort citations if multiple references are given to a \cite command
+        bibstyle=authoryear, % Have author and year displayed prominently in bibliography
+        mergedate=basic, % If date is more than just a year, print extra info at the end
+        citestyle=authoryear-comp, % Cite with author and year (compressed for same author multiple times)
+        sortcites=true, sorting=ynt, % Sort grouped citations in year-name-title order e.g. http://tex.stackexchange.com/questions/244971/biblatex-order-of-entries-in-a-multi-citation
+        % Can print bibliography in a different order if required by setting a new refcontext (see below)
+        %uniquelist=minyear, % Use the citation year, and as many extra authors as necessary, to disambiguate entries
+        uniquelist=false, % Add 2015a, 2015b is necessary
+        %uniquename=allinit, % Use author initials to disambiguate entries (and try to disambiguate all authors in the bibliography, not just in the in text citations)
+        uniquename=mininit, % Use author initials to disambiguate entries (but as sparingly as possible)
+        maxcitenames=2, % Maximum of 2 authors in text
+        maxbibnames=5,  % Max of 5 authors in bibliography
+        minbibnames=5, % If more than 5 authors, still print the first 5 and et al.
+        giveninits=true, % Just print initials rather than first names
+        isbn=false, % Remove some unnecessary fields
+        url=false,
+        doi=false,
+        eprint=false
+    ]{biblatex}
+
+% Need to add the following before \printbibliography to get that printed sorted by author though
+% \newrefcontext[sorting=nyt]
+
+% Can add e.g. "In press" articles to bibliography using the pubstate field
+% pubstate = {inpress}
+
+% Change so all names are last-first (otherwise prints first author last-first, and rest first-last...)
+% http://tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
+\DeclareNameAlias{sortname}{last-first}
+
+% Clear notes from references - don't need to be printed
+\AtEveryBibitem{\clearfield{note}}
+
+% Make the titles in the bibliography be hyperlinks to the specified URL / DOI
+% http://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+% http://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
+% http://tex.stackexchange.com/questions/3039/bibliography-entry-containing
+\newbibmacro{string+link}[1]{%
+    \iffieldundef{doi}%
+    {\iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}%
+    {\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+\DeclareFieldFormat*{title}{\usebibmacro{string+link}{\mkbibemph{#1}}}
+
+% Change \parencite citation to square brackets
+% http://tex.stackexchange.com/questions/16765/biblatex-author-year-square-brackets
+\newrobustcmd*{\parentexttrack}[1]{%
+    \begingroup
+    \blx@blxinit
+    \blx@setsfcodes
+    \blx@bibopenparen#1\blx@bibcloseparen
+    \endgroup}
+
+\AtEveryCite{%
+    \let\parentext=\parentexttrack%
+    \let\bibopenparen=\bibopenbracket%
+    \let\bibcloseparen=\bibclosebracket}
+  
+% Change so whole citation is a link (except for \textcite)
+% http://tex.stackexchange.com/questions/15951/hyperlink-name-with-biblatex-authoryear-biblatex-1-4b
+\DeclareFieldFormat{citehyperref}{%
+    \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+    \bibhyperref{#1}}
+
+\savebibmacro{cite}
+
+\renewbibmacro*{cite}{%
+    \printtext[citehyperref]{%
+        \restorebibmacro{cite}%
+        \usebibmacro{cite}}}
+
+% Compress citations by removing comma between entries
+%\renewcommand*{\multicitedelim}{\addcomma}
+
+%Make new command for a superscript citation that matches the \cite command
+% In the numeric case this will have brackets (i.e. super-b-cite ...)
+%\newcommand*{\superbcite}[1]{\textsuperscript{\cite{#1}}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
