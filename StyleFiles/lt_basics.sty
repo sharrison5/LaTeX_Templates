@@ -38,7 +38,11 @@
 
 % Load some new fonts!
 \RequirePackage[no-math]{fontspec}      % Let unicode-math deal with maths
-    \defaultfontfeatures{Ligatures=TeX, Numbers=Proportional}
+
+    \defaultfontfeatures[\rmfamily, \sffamily]{
+        Ligatures   = {TeX,Common},
+        Numbers     = {Lining,Proportional},
+        Contextuals = Alternate}        % https://github.com/libertinus-fonts/libertinus/issues/21
     % Alternatives: {Numbers=Lowercase}
 
     \setmainfont{libertinusserif}[      % Family name: Libertinus Serif
