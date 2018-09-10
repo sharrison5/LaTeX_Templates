@@ -12,56 +12,69 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_bib}[2018/09/06 Bibliography formatting]
+\ProvidesPackage{lt_bib}[2018/09/10 Bibliography formatting]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Packages {{{
+% Load biblatex {{{
 
-\newcommand{\href}[2]{#2}
+% General comments:
+%  + Prefer a more verbose citestyle as, IMHO, it makes it easier to identify
+%    specific references in the text.
+%  + Makes sense to make use of \autocite{}, with \textcite{} where needed.
+%  + The sort order for the bibliography itself (not the in-text citations) is
+%    set using a second ref context. Use:
+%    \newrefcontext[sorting=nyt]
+%    \printbibliography
+%  + Can add e.g. "In press" articles to bibliography using the pubstate field
+%    pubstate = {inpress}
 
 \RequirePackage[
         backend=biber,
-        %bibstyle=numeric, % Citations are defined by numbers
-        %citestyle=numeric-comp, % Compress numbers when multiple references are given to e.g. [1-3,5]
-        %sorting=none, % Print in citation order rather than sorting
-        %sortcites=true, % Sort citations if multiple references are given to a \cite command
-        bibstyle=authoryear, % Have author and year displayed prominently in bibliography
-        mergedate=basic, % If date is more than just a year, print extra info at the end
-        citestyle=authoryear-comp, % Cite with author and year (compressed for same author multiple times)
-        sortcites=true, sorting=ynt, % Sort grouped citations in year-name-title order e.g. http://tex.stackexchange.com/questions/244971/biblatex-order-of-entries-in-a-multi-citation
-        % Can print bibliography in a different order if required by setting a new refcontext (see below)
-        %uniquelist=minyear, % Use the citation year, and as many extra authors as necessary, to disambiguate entries
-        uniquelist=false, % Add 2015a, 2015b is necessary
-        %uniquename=allinit, % Use author initials to disambiguate entries (and try to disambiguate all authors in the bibliography, not just in the in text citations)
-        uniquename=mininit, % Use author initials to disambiguate entries (but as sparingly as possible)
-        maxcitenames=2, % Maximum of 2 authors in text
-        maxbibnames=5,  % Max of 5 authors in bibliography
-        minbibnames=5, % If more than 5 authors, still print the first 5 and et al.
-        giveninits=true, % Just print initials rather than first names
-        isbn=false, % Remove some unnecessary fields
+        % Use author and year for citations
+        % texdoc authoryear-icomp
+        bibstyle=authoryear,
+        citestyle=authoryear-icomp, % Use ibid; compress same author list
+        % Name format
+        giveninits=true,    % Just print initials rather than first names
+        % Bibliography format
+        dashed=true,        % Recurring author lists replaced by dash
+        mergedate=basic,    % Only print date again at end if provides more info
+        maxbibnames=5,      % Max no. of authors to print in bibliography
+        minbibnames=5,      % If we do truncate, print 5 authors and et al.
+        % Citation format
+        sortcites=true,     % i.e. sort \cite{B,A,C} => A,B,C
+        sorting=ynt,        % Year, Name, Title
+        maxcitenames=2,     % Maximum of 2 authors in text
+        mincitenames=1,     % But just "Author et al." for truncated citations
+        uniquelist=false,   % 2015a as necessary rather than adding authors
+        uniquename=mininit  % Use author initials to disambiguate entries (but as sparingly as possible)
+    ]{biblatex}
+
+% Change so all names in the bibliography are last-first (otherwise prints
+% first author last-first, and rest first-last...)
+% https://tex.stackexchange.com/a/13076
+\DeclareNameAlias{sortname}{family-given}
+
+% Clear things we don't want to be printed
+\ExecuteBibliographyOptions{
+        isbn=false,
         url=false,
         doi=false,
         eprint=false
-    ]{biblatex}
-
-% Need to add the following before \printbibliography to get that printed sorted by author though
-% \newrefcontext[sorting=nyt]
-
-% Can add e.g. "In press" articles to bibliography using the pubstate field
-% pubstate = {inpress}
-
-% Change so all names are last-first (otherwise prints first author last-first, and rest first-last...)
-% http://tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
-\DeclareNameAlias{sortname}{last-first}
-
-% Clear notes from references - don't need to be printed
+    }
 \AtEveryBibitem{\clearfield{note}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tweak formatting {{{
 
 % Make the titles in the bibliography be hyperlinks to the specified URL / DOI
 % http://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
 % http://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
 % http://tex.stackexchange.com/questions/3039/bibliography-entry-containing
+\newcommand{\href}[2]{#2}   % Do nothing in case hyperref not loaded
+
 \newbibmacro{string+link}[1]{%
     \iffieldundef{doi}%
     {\iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}%
@@ -81,7 +94,7 @@
     \let\parentext=\parentexttrack%
     \let\bibopenparen=\bibopenbracket%
     \let\bibcloseparen=\bibclosebracket}
-  
+
 % Change so whole citation is a link (except for \textcite)
 % http://tex.stackexchange.com/questions/15951/hyperlink-name-with-biblatex-authoryear-biblatex-1-4b
 \DeclareFieldFormat{citehyperref}{%
