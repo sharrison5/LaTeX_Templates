@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/09/01 Custom article format]
+\ProvidesClass{lt_article}[2018/09/11 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -21,6 +21,7 @@
 % Prerequisites {{{
 
 \RequirePackage{lt_basics}
+\RequirePackage{lt_bib}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -98,12 +99,16 @@
 % Redefine \sectionmark so that it puts the section info in \leftmark
 % Must be after \pagestyle{fancy} so defaults are set
 \renewcommand{\sectionmark}[1]{\markboth{\thesection.~#1}{}}
+% This also stops these being uppercase, so we need to fix the bibliography too
+\renewcommand*{\abx@MakeMarkcase}[1]{#1}
+% https://tex.stackexchange.com/a/432120
+% https://github.com/plk/biblatex/issues/627
 
 % Define the main page style
 %\fancypagestyle{fancy}{    % This breaks things
     \fancyhf{}  % Clear all header/footer fields
     \rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
-    \lhead{\sffamily \textcolor{lightgray}{\nouppercase{\leftmark}}}
+    \lhead{\sffamily \textcolor{lightgray}{\leftmark}}
     \renewcommand{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 %}
