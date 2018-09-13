@@ -30,26 +30,26 @@
 %    pubstate = {inpress}
 
 \RequirePackage[
-        backend=biber,
-        % Use author and year for citations
-        % texdoc authoryear-icomp
-        bibstyle=authoryear,
-        citestyle=authoryear-icomp, % Use ibid; compress same author list
-        % Name format
-        giveninits=true,    % Just print initials rather than first names
-        % Bibliography format
-        dashed=true,        % Recurring author lists replaced by dash
-        mergedate=basic,    % Only print date again at end if provides more info
-        maxbibnames=5,      % Max no. of authors to print in bibliography
-        minbibnames=5,      % If we do truncate, print 5 authors and et al.
-        % Citation format
-        sortcites=true,     % i.e. sort \cite{B,A,C} => A,B,C
-        sorting=ynt,        % Year, Name, Title
-        maxcitenames=2,     % Maximum of 2 authors in text
-        mincitenames=1,     % But just "Author et al." for truncated citations
-        uniquelist=false,   % 2015a as necessary rather than adding authors
-        uniquename=mininit  % Use author initials to disambiguate entries (but as sparingly as possible)
-    ]{biblatex}
+    backend=biber,
+    % Use author and year for citations
+    % texdoc authoryear-icomp
+    bibstyle=authoryear,
+    citestyle=authoryear-icomp, % Use ibid; compress same author list
+    % Name format
+    giveninits=true,    % Just print initials rather than first names
+    % Bibliography format
+    dashed=true,        % Recurring author lists replaced by dash
+    mergedate=basic,    % Only print date again at end if provides more info
+    maxbibnames=5,      % Max no. of authors to print in bibliography
+    minbibnames=5,      % If we do truncate, print 5 authors and et al.
+    % Citation format
+    sortcites=true,     % i.e. sort \cite{B,A,C} => A,B,C
+    sorting=ynt,        % Year, Name, Title
+    maxcitenames=2,     % Maximum of 2 authors in text
+    mincitenames=1,     % But just "Author et al." for truncated citations
+    uniquelist=false,   % 2015a as necessary rather than adding authors
+    uniquename=mininit  % Use author initials to disambiguate entries (but as sparingly as possible)
+]{biblatex}
 
 % Change so all names in the bibliography are last-first (otherwise prints
 % first author last-first, and rest first-last...)
@@ -58,11 +58,11 @@
 
 % Clear things we don't want to be printed
 \ExecuteBibliographyOptions{
-        isbn=false,
-        url=false,
-        doi=false,
-        eprint=false
-    }
+    isbn=false,
+    url=false,
+    doi=false,
+    eprint=false
+}
 \AtEveryBibitem{\clearfield{note}}
 
 % }}}

@@ -9,14 +9,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Package info {{{
 
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lt_basics}[2018/09/13 Custom LuaTeX style]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General comments {{{
+
+% Package / class overviews
 % http://en.wikibooks.org/wiki/LaTeX/Modular_Documents
 % http://en.wikibooks.org/wiki/LaTeX/Creating_Packages
 % http://www.latex-project.org/guides/clsguide.pdf
 
-% Requires at least LaTeX version 2e.
-\NeedsTeXFormat{LaTeX2e}
+% TeX nomenclature
+% https://www.tug.org/levels.html
 
-\ProvidesPackage{lt_basics}[2048/09/04 Custom LuaTeX style]
+% Style guide for macros
+%   An issue is that whitespace in macros may cause unwanted spaces to be
+% output in the text. This is what the trailing spaces are meant to prevent.
+% Note that while these are often gobbled up by control words (e.g. \LaTeX),
+% the policy is to err on the side of caution. Note that for e.g. options, we
+% don't need to worry.
+%   The policy for brace indentation is similar to e.g. C[++]
+
+\iffalse
+% Example syntax
+\examplecommand{%
+    do something%
+}{%
+    \somethingelse%
+}
+\fi
+
+% For more info, see:
+% https://tex.stackexchange.com/q/7453
+% https://tex.stackexchange.com/q/19922
+% https://tex.stackexchange.com/q/34844
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,7 +72,8 @@
     \defaultfontfeatures[\rmfamily, \sffamily]{
         Ligatures   = {TeX,Common},
         Numbers     = {Lining,Proportional},
-        Contextuals = Alternate}        % https://github.com/libertinus-fonts/libertinus/issues/21
+        Contextuals = Alternate         % https://github.com/libertinus-fonts/libertinus/issues/21
+    }
     % Alternatives: {Numbers=Lowercase}
 
     \setmainfont{libertinusserif}[      % Family name: Libertinus Serif
@@ -50,7 +81,8 @@
         UprightFont    = *-regular,
         ItalicFont     = *-italic,
         BoldFont       = *-semibold,
-        BoldItalicFont = *-semibolditalic]
+        BoldItalicFont = *-semibolditalic
+    ]
     % Alternatives: STIX Two Text [STIX Two Math], TeX Gyre Schola [TeX Gyre Schola Math]
     % Without maths: Cochineal, Garamond (see below), Junicode
 
@@ -63,11 +95,13 @@
     \setsansfont{Lato}[
         BoldFont={Lato-Semibold.ttf},
         BoldItalicFont={Lato-SemiboldItalic.ttf},
-        Scale=MatchUppercase]
+        Scale=MatchUppercase
+    ]
     % Alternatives: IBM Plex Sans, Linux Biolinum O, Rosario, URW Classico
 
     \setmonofont{Inconsolatazi4}[
-        Scale=MatchLowercase]
+        Scale=MatchLowercase
+    ]
     % Alternatives: Droid Sans Mono, Source Code Pro
 
 % Finding the font files / family name can be tricky. Try e.g.
@@ -122,7 +156,8 @@
         labelindent=\parindent, % Labels aligned with para indent
         leftmargin=*,           % Adjust left margin based on label size
         rightmargin=\parindent, % Make narrower on RHS for balance
-        font=\sffamily}         % Labels have different font
+        font=\sffamily          % Labels have different font
+    }
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,10 +172,12 @@
 \newcommand*{\eg}{e.g.\@\xspace}
 \newcommand*{\ie}{i.e.\@\xspace}
 \newcommand*{\cf}{cf.\@\xspace}
-\newcommand*{\etc}{
-    \@ifnextchar{.}
-        {etc}
-        {etc.\@\xspace}
+\newcommand*{\etc}{%
+    \@ifnextchar{.}{%
+        etc%
+    }{%
+        etc.\@\xspace%
+    }%
 }
 
 % Command for a quote environment with an author
@@ -149,16 +186,19 @@
 %\end{aquote}
 % https://tex.stackexchange.com/a/13761
 % More in depth description on page 106 of the TeXbook
-\newcommand{\signed}[1]{
-    \leavevmode\unskip
-    \nobreak\hfil\penalty50\hskip2em\hbox{}\nobreak\hfil #1
-    \parfillskip=0pt \finalhyphendemerits=0 \endgraf}
+\newcommand{\signed}[1]{%
+    \leavevmode\unskip%
+    \nobreak\hfil\penalty50\hskip2em\hbox{}\nobreak\hfil #1%
+    \parfillskip=0pt \finalhyphendemerits=0 \endgraf%
+}
 % Have to save argument - not passed to \end{}
 % https://tex.stackexchange.com/q/17036
 % Note also have to format before saving - not sure why
-\newenvironment{aquote}[1]
-    {\newsavebox{\authorbox} \savebox{\authorbox}{\textit{#1}} \begin{quote}}
-    {\signed{\usebox{\authorbox}} \end{quote}}
+\newenvironment{aquote}[1]{%
+    \newsavebox{\authorbox} \savebox{\authorbox}{\textit{#1}} \begin{quote}%
+}{%
+    \signed{\usebox{\authorbox}} \end{quote}%
+}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
