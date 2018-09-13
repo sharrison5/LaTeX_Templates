@@ -17,8 +17,7 @@
 \usepackage{lt_bib}
 \usepackage{lt_maths}
 \usepackage{lt_utilities}
-
-\usepackage{hyperref}
+\usepackage{lt_hyperref}
 
 \title{Template for the \texttt{lt\_article} class}
 \author{A.~N.~Author, B.~N.~Author \& C.~N.~Author}
@@ -48,8 +47,8 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Introduction} % {{{
 
-\blindtext See \textcite{Bayes} for more information
-\autocite{GravitationalWaves}.
+\blindtext See \textcite{Bayes} or \Ref{Section}{sec:Examples} for more
+information \autocite{GravitationalWaves}.
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Subsection} % {{{
@@ -126,6 +125,7 @@
 \newpage
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Examples} % {{{
+\label{sec:Examples}
 
 \textrm{\blindtext}
 

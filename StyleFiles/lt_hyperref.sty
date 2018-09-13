@@ -1,0 +1,80 @@
+% lt_hyperref.sty
+% Sam Harrison 2018
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package info {{{
+
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lt_hyperref}[2018/09/13 Link management]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prerequisites {{{
+
+\RequirePackage{lt_basics}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes {{{
+
+% Use a consistent naming scheme for labels!
+% See e.g. https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
+% \label{subsec:Labelling}
+% ch: sec: subsec: fig: tab: eq: etc
+
+% Hyperref conflicts with a *lot* of other packages if not loaded correctly...
+% Fortunately, simply loading it last works most of the time
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load hyperref {{{
+
+% Predefine key colours so we can use elsewhere if necessary
+\colorlet{CiteColour}{SeaGreen4}
+\colorlet{LinkColour}{OrangeRed2!75!black}
+\colorlet{UrlColour}{blue}
+
+\RequirePackage[
+    linktocpage = true,
+    colorlinks  = true,
+    citecolor   = CiteColour,
+    linkcolor   = LinkColour,
+    urlcolor    = UrlColour
+]{hyperref}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful link commands {{{
+
+\RequirePackage{hyphenat} %Defines command \nohyphens{text}
+
+% Define a command that makes the whole of 'figure 6' a link, not just the number
+% Stop hyphenation as if these get split over pages it fucks everything up
+% Takes two command, e.g. \Ref{figure}{label}
+\newcommand*{\Ref}[2]{\nohyphens{\hyperref[#2]{#1~\ref*{#2}}}}
+
+% This creates a link to a subfigure e.g. 'Panel (b)'
+\newcommand*{\SubRef}[2]{\nohyphens{\hyperref[#2]{#1~\subref{#2}}}}
+
+% Makes URLs have same size and font as surrounding text
+% \urlstyle{same}
+
+% Command to print URL without http://
+% e.g. \rurl{arma.sourceforge.net}
+% http://tex.stackexchange.com/a/139934
+\newcommand\hiddenurl[2]{%
+    \href{#1#2}{\nolinkurl{#2}}%
+}
+\newcommand\rurl[1]{%
+    \hiddenurl{http://}{#1}%
+}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
