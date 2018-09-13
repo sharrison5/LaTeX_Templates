@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_bib}[2018/09/10 Bibliography formatting]
+\ProvidesPackage{lt_bib}[2018/09/13 Bibliography formatting]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,53 +67,75 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tweak formatting {{{
+% Bibliography links {{{
 
-% Make the titles in the bibliography be hyperlinks to the specified URL / DOI
-% http://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
-% http://tex.stackexchange.com/questions/48400/biblatex-make-title-hyperlink-to-dois-url-or-isbn
-% http://tex.stackexchange.com/questions/3039/bibliography-entry-containing
-\newcommand{\href}[2]{#2}   % Do nothing in case hyperref not loaded
+% Make the titles in the bibliography be hyperlinks to the specified DOI/URL
+% https://tex.stackexchange.com/q/23832
+% https://tex.stackexchange.com/q/48400
+% Note DOIs can just be a pain...
+% https://tex.stackexchange.com/q/3039
 
+% Do nothing in case hyperref not loaded
+\newcommand{\href}[2]{#2}
+
+% Function that takes a bibentry and turns the title into a link
 \newbibmacro{string+link}[1]{%
-    \iffieldundef{doi}%
-    {\iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}%
-    {\href{http://dx.doi.org/\thefield{doi}}{#1}}}
+    \iffieldundef{doi}{%
+        \iffieldundef{url}{%
+            #1% If neither present, leave as is
+        }{%
+            \href{\thefield{url}}{#1}%
+        }%
+    }{%
+        \href{https://doi.org/\thefield{doi}}{#1}%
+    }%
+}
+
+% And apply to the title
 \DeclareFieldFormat*{title}{\usebibmacro{string+link}{\mkbibemph{#1}}}
 
-% Change \parencite citation to square brackets
-% http://tex.stackexchange.com/questions/16765/biblatex-author-year-square-brackets
-\newrobustcmd*{\parentexttrack}[1]{%
-    \begingroup
-    \blx@blxinit
-    \blx@setsfcodes
-    \blx@bibopenparen#1\blx@bibcloseparen
-    \endgroup}
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Citation links {{{
 
-\AtEveryCite{%
-    \let\parentext=\parentexttrack%
-    \let\bibopenparen=\bibopenbracket%
-    \let\bibcloseparen=\bibclosebracket}
+% Change so everything in brackets is a link, not just e.g. the year
+% \textcite{} is fine so not changed here
+% https://tex.stackexchange.com/a/27107
+% https://github.com/plk/biblatex/issues/428
 
-% Change so whole citation is a link (except for \textcite)
-% http://tex.stackexchange.com/questions/15951/hyperlink-name-with-biblatex-authoryear-biblatex-1-4b
 \DeclareFieldFormat{citehyperref}{%
     \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
-    \bibhyperref{#1}}
+    \bibhyperref{#1}%
+}
 
 \savebibmacro{cite}
 
 \renewbibmacro*{cite}{%
     \printtext[citehyperref]{%
         \restorebibmacro{cite}%
-        \usebibmacro{cite}}}
+        \usebibmacro{cite}%
+    }%
+}
 
-% Compress citations by removing comma between entries
-%\renewcommand*{\multicitedelim}{\addcomma}
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change to square brackets {{{
 
-%Make new command for a superscript citation that matches the \cite command
-% In the numeric case this will have brackets (i.e. super-b-cite ...)
-%\newcommand*{\superbcite}[1]{\textsuperscript{\cite{#1}}}
+% Change \parencite citation to square brackets
+% https://tex.stackexchange.com/a/16792
+\newrobustcmd*{\parentexttrack}[1]{%
+    \begingroup
+    \blx@blxinit
+    \blx@setsfcodes
+    \blx@bibopenparen#1\blx@bibcloseparen
+    \endgroup
+}
+
+\AtEveryCite{%
+    \let\parentext=\parentexttrack%
+    \let\bibopenparen=\bibopenbracket%
+    \let\bibcloseparen=\bibclosebracket%
+}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
