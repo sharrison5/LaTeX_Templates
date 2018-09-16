@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_hyperref}[2018/09/13 Link management]
+\ProvidesPackage{lt_hyperref}[2018/09/16 Link management]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +27,7 @@
 % Use a consistent naming scheme for labels!
 % See e.g. https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing
 % \label{subsec:Labelling}
-% ch: sec: subsec: fig: tab: eq: etc
+% ch: sec: subsec: fig: subfig: tab: eq: etc
 
 % Hyperref conflicts with a *lot* of other packages if not loaded correctly...
 % Fortunately, simply loading it last works most of the time
@@ -53,27 +53,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Useful link commands {{{
 
-\RequirePackage{hyphenat} %Defines command \nohyphens{text}
+% Define a command that makes the whole of 'Figure 6' a link, not just the
+% number e.g. \Ref{Figure}{fig:label}. Similar to \autoref{fig:label}.
 
-% Define a command that makes the whole of 'figure 6' a link, not just the number
-% Stop hyphenation as if these get split over pages it fucks everything up
-% Takes two command, e.g. \Ref{figure}{label}
+% Stop hyphenation as if these get split over pages it breaks everything
+\RequirePackage{hyphenat}   % Defines command \nohyphens{text}
+
+% Figure \ref{fig:label} --> \Ref{Figure}{fig:label}
 \newcommand*{\Ref}[2]{\nohyphens{\hyperref[#2]{#1~\ref*{#2}}}}
 
-% This creates a link to a subfigure e.g. 'Panel (b)'
-\newcommand*{\SubRef}[2]{\nohyphens{\hyperref[#2]{#1~\subref{#2}}}}
+% Panel \subref{subfig:label} --> \SubRef{Panel}{subfig:label}
+\newcommand*{\SubRef}[2]{\nohyphens{\hyperref[#2]{#1~\subref*{#2}}}}
 
-% Makes URLs have same size and font as surrounding text
-% \urlstyle{same}
 
-% Command to print URL without http://
+% Command to print shortened URLs
 % e.g. \rurl{arma.sourceforge.net}
 % http://tex.stackexchange.com/a/139934
-\newcommand\hiddenurl[2]{%
-    \href{#1#2}{\nolinkurl{#2}}%
+% \hiddenurl{https://}{ctan.org}{/pkg/hyperref} will print ctan.org
+\newcommand{\hiddenurl}[3]{%
+    \href{#1#2#3}{\nolinkurl{#2}}%
 }
-\newcommand\rurl[1]{%
-    \hiddenurl{http://}{#1}%
+% And versions that add http[s]://
+\newcommand{\hurl}[1]{%
+    \hiddenurl{http://}{#1}{}%
+}
+\newcommand{\hsurl}[1]{%
+    \hiddenurl{https://}{#1}{}%
 }
 
 % }}}
