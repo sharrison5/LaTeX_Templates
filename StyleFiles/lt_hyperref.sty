@@ -48,7 +48,12 @@
     \colorlet{UrlColour}{gray}%
 }
 
-\ProcessOptions\relax
+% Execute option-specific code
+% https://tex.stackexchange.com/a/82441
+% In order defined above:
+%\ProcessOptions\relax
+% In order passed to package
+\ProcessOptions*
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
