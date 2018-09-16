@@ -16,12 +16,6 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Prerequisites {{{
-
-\RequirePackage{lt_basics}
-
-% }}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Notes {{{
 
 % Use a consistent naming scheme for labels!
@@ -34,12 +28,31 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Load hyperref {{{
+% Prerequisites {{{
+
+\RequirePackage{lt_basics}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Options {{{
 
 % Predefine key colours so we can use elsewhere if necessary
 \colorlet{CiteColour}{SeaGreen4}
 \colorlet{LinkColour}{OrangeRed2!75!black}
 \colorlet{UrlColour}{blue}
+
+% Change to greyscale for printing
+\DeclareOption{print}{%
+    \colorlet{CiteColour}{gray}%
+    \colorlet{LinkColour}{black}%
+    \colorlet{UrlColour}{gray}%
+}
+
+\ProcessOptions\relax
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load hyperref {{{
 
 \RequirePackage[
     linktocpage = true,
