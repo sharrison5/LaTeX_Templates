@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/09/13 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/09/16 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,6 +27,11 @@
 % https://www.tug.org/levels.html
 
 % Style guide for macros
+%  Prefer \newcommand* and \newenvironment* over the unstarred versions when
+% possible. This gives better error checking etc. when the arguments cannot
+% contain blank lines or \par (which is often the case. See:
+%  + https://tex.stackexchange.com/a/1057
+%  + https://tex.stackexchange.com/a/86451
 %   An issue is that whitespace in macros may cause unwanted spaces to be
 % output in the text. This is what the trailing spaces are meant to prevent.
 % Note that while these are often gobbled up by control words (e.g. \LaTeX),
@@ -35,7 +40,10 @@
 %   The policy for brace indentation is similar to e.g. C[++]
 
 \iffalse
-% Example syntax
+% Starred versions!
+\newcommand*{\pass}[1]{#1}
+
+% Example layout
 \examplecommand{%
     do something%
 }{%
@@ -186,7 +194,7 @@
 %\end{aquote}
 % https://tex.stackexchange.com/a/13761
 % More in depth description on page 106 of the TeXbook
-\newcommand{\signed}[1]{%
+\newcommand*{\signed}[1]{%
     \leavevmode\unskip%
     \nobreak\hfil\penalty50\hskip2em\hbox{}\nobreak\hfil #1%
     \parfillskip=0pt \finalhyphendemerits=0 \endgraf%
@@ -194,7 +202,7 @@
 % Have to save argument - not passed to \end{}
 % https://tex.stackexchange.com/q/17036
 % Note also have to format before saving - not sure why
-\newenvironment{aquote}[1]{%
+\newenvironment*{aquote}[1]{%
     \newsavebox{\authorbox} \savebox{\authorbox}{\textit{#1}} \begin{quote}%
 }{%
     \signed{\usebox{\authorbox}} \end{quote}%

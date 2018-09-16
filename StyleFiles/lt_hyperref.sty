@@ -70,14 +70,14 @@
 % e.g. \rurl{arma.sourceforge.net}
 % http://tex.stackexchange.com/a/139934
 % \hiddenurl{https://}{ctan.org}{/pkg/hyperref} will print ctan.org
-\newcommand{\hiddenurl}[3]{%
+\newcommand*{\hiddenurl}[3]{%
     \href{#1#2#3}{\nolinkurl{#2}}%
 }
 % And versions that add http[s]://
-\newcommand{\hurl}[1]{%
+\newcommand*{\hurl}[1]{%
     \hiddenurl{http://}{#1}{}%
 }
-\newcommand{\hsurl}[1]{%
+\newcommand*{\hsurl}[1]{%
     \hiddenurl{https://}{#1}{}%
 }
 

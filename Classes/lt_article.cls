@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/09/11 Custom article format]
+\ProvidesClass{lt_article}[2018/09/16 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,8 +85,8 @@
 % Commands to get header text, in the same way as e.g. \title{}
 % https://stackoverflow.com/q/2833954
 % \header{blah} stores blah as the output of \@header{}
-\newcommand{\header}[1]{\renewcommand{\@header}{#1}}
-\newcommand{\@header}{}   % Put the default header in these braces if required
+\newcommand*{\header}[1]{\renewcommand{\@header}{#1}}
+\newcommand*{\@header}{}    % Put the default header in these braces if required
 
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}   % Use the fancy style (redefined below)

@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_bib}[2018/09/13 Bibliography formatting]
+\ProvidesPackage{lt_bib}[2018/09/16 Bibliography formatting]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,10 +76,10 @@
 % https://tex.stackexchange.com/q/3039
 
 % Do nothing in case hyperref not loaded
-\newcommand{\href}[2]{#2}
+\newcommand*{\href}[2]{#2}
 
 % Function that takes a bibentry and turns the title into a link
-\newbibmacro{string+link}[1]{%
+\newbibmacro*{string+link}[1]{%
     \iffieldundef{doi}{%
         \iffieldundef{url}{%
             #1% If neither present, leave as is
