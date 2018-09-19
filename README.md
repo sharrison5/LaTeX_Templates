@@ -50,8 +50,8 @@ The command is:
 gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompatibilityLevel=1.4 \
     -dPDFSETTINGS=<quality> -sOutputFile=<output.pdf> <input.pdf>
 ```
-Where the `<quality>` setting can be any of `\screen`, `\ebook`, `\printer` or
-`\prepress`. The backslash is important!
+Where the `<quality>` setting can be any of `/screen`, `/ebook`, `/printer` or
+`/prepress`. The forward slash is important!
 
 For more information see e.g. [here](https://tex.stackexchange.com/a/41273).
 
