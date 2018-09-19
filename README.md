@@ -42,6 +42,20 @@ sudo getnonfreefonts --sys <font>|--all
 ```
 
 --------------------
+### Compressing generated PDFs
+
+The easiest way to do this is to use [Ghostscript](https://ghostscript.com/).
+The command is:
+```
+gs -sDEVICE=pdfwrite -dNOPAUSE -dQUIET -dBATCH -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=<quality> -sOutputFile=<output.pdf> <input.pdf>
+```
+Where the `<quality>` setting can be any of `\screen`, `\ebook`, `\printer` or
+`\prepress`. The backslash is important!
+
+For more information see e.g. [here](https://tex.stackexchange.com/a/41273).
+
+--------------------
 
 ###### Colophon
 Sam Harrison, 2018, MIT License.
