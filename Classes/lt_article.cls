@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/09/16 Custom article format]
+\ProvidesClass{lt_article}[2018/09/21 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,6 +120,8 @@
     \renewcommand{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 }
+
+\setlength{\headheight}{1.2\baselineskip}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
