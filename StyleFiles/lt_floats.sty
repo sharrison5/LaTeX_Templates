@@ -12,7 +12,28 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_floats}[2018/09/21 Figures, tables, etc.]
+\ProvidesPackage{lt_floats}[2018/09/22 Figures, tables, etc.]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes {{{
+
+% ## Sizing
+
+% LaTeX gives us access to a variety of useful widths:
+%  + \paperwidth \textwidth \columnwidth \linewidth
+
+% Of these, \linewidth is the most adaptive in that it reflects e.g. the local
+% environment. As such, it makes sense to specify floats relative to \linewidth
+% as these will naturally adapt to one/two columns, minipages etc.
+
+% See e.g.
+% https://en.wikibooks.org/wiki/LaTeX/Lengths#LaTeX_default_lengths
+% https://tex.stackexchange.com/a/16956
+
+% Note also that we can use the \the command to inspect widths etc
+% See e.g. https://tex.stackexchange.com/a/38680
+%\the\textwidth\ \the\columnwidth\ \the\linewidth
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,13 +135,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Useful commands {{{
 
-%Defines the \maxwidth command
-\def\maxwidth{%
- \ifdim\Gin@nat@width>\linewidth
-  \linewidth
- \else
-  \Gin@nat@width
- \fi
+% For \includegraphics
+\let\imagewidth\Gin@nat@width
+\let\imageheight\Gin@nat@height
+
+% For image scaling: will downscale images if necessary, but won't stretch
+% https://tex.stackexchange.com/a/6077
+\newcommand{\maxwidth}{%
+    \ifdim\imagewidth>\linewidth
+        \linewidth
+    \else
+        \imagewidth
+    \fi
 }
 
 % }}}
