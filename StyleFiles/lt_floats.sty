@@ -62,6 +62,13 @@
 
 \RequirePackage{graphicx} %For importing figures
 
+% More intuitive trimming / clipping amongst others
+\RequirePackage[Export]{adjustbox}
+% Export option overrides \includegraphics to allow relative trimming
+% \includegraphics[trim={0 0 {.5\width} 0}, clip]{image}
+% trim={<left> <bottom> <right> <top>}
+% https://tex.stackexchange.com/a/57420
+
 \RequirePackage{wrapfig} %For adding figures in text
 
 % }}}
@@ -130,24 +137,6 @@
 %\RequirePackage[ruled,lined]{algorithm2e} % For adding pseudocode algorithms
 
 %\RequirePackage{algpseudocode} % Layout for the algorithmicx package
-
-% }}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Useful commands {{{
-
-% For \includegraphics
-\let\imagewidth\Gin@nat@width
-\let\imageheight\Gin@nat@height
-
-% For image scaling: will downscale images if necessary, but won't stretch
-% https://tex.stackexchange.com/a/6077
-\newcommand{\maxwidth}{%
-    \ifdim\imagewidth>\linewidth
-        \linewidth
-    \else
-        \imagewidth
-    \fi
-}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
