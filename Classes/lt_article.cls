@@ -22,6 +22,7 @@
 
 \RequirePackage{lt_basics}
 \RequirePackage{lt_bib}
+\RequirePackage{lt_floats}
 
 \colorlet{AccentColour}{RoyalBlue3!50!RoyalBlue4}
 
@@ -67,6 +68,9 @@
 \titleformat*{\section}      {\sffamily \Large \color{AccentColour}}
 \titleformat*{\subsection}   {\sffamily \large \color{AccentColour}}
 \titleformat*{\subsubsection}{\sffamily \normalsize}
+
+% Colour figure captions too
+\captionsetup{labelfont+={color=AccentColour}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

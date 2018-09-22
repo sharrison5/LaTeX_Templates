@@ -45,16 +45,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % General formatting {{{
 
-\RequirePackage{caption} %Change the format of figure captions
-    %\captionsetup{format=hang} %Change so caption doesn't wrap under label
-    \captionsetup{labelfont={small,bf}} %Make label small and bold
-    \captionsetup{font={small}} %Make caption small
+% Change the format of figure captions
+\RequirePackage{caption}
+    \captionsetup{labelfont={sf,bf}}
+    \captionsetup{margin=\parindent}
 
 \RequirePackage{subcaption}
+    % Redefine these explicitly to stop unwanted inheritance
+    \captionsetup[sub]{labelfont={sf,bf,small}}
+    \captionsetup[sub]{textfont=small}
     % Change labels from e.g. 1a to 1(a)
-    % http://www.peteryu.ca/tutorials/publishing/latex_captions
     \captionsetup[subfigure]{labelformat=simple}
-    \renewcommand\thesubfigure{(\alph{subfigure})}
+    \renewcommand{\thesubfigure}{(\alph{subfigure})}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

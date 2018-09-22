@@ -103,7 +103,7 @@
 \Blindtext[1]
 
 \subsubsection{Subsubsection}
-\Blindtext[1]
+\blindtext
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \begin{figure}[tbp] % {{{
@@ -126,24 +126,29 @@
         trim={0 0 0 {.1\height}}, clip, width=0.45\linewidth
     ]{PlaceholderImage.png}
 }
-%
-\par\bigskip  % Force a bit of vertical whitespace
-%
-\subcaptionbox{
-    And a long grey rectangle, to make it look a bit like a face.
-    \label{subfig:LongRectangle}
-}{
-    \includegraphics[
-        trim={0 0 0 {.8\height}}, clip, width=0.8\linewidth
-    ]{PlaceholderImage.png}
-}
+%%
+%\par\bigskip  % Force a bit of vertical whitespace
+%%
+%\subcaptionbox{
+%    And a long grey rectangle, to make it look a bit like a face.
+%    \label{subfig:LongRectangle}
+%}{
+%    \includegraphics[
+%        trim={0 0 0 {.8\height}}, clip, width=0.8\linewidth
+%    ]{PlaceholderImage.png}
+%}
 
-\caption{Some artistic shapes.}
+\caption{
+    Some artistic shapes. Another long caption that is just designed to
+    illustrate the different margin options. Stop reading! There's really
+    nothing else coming.
+}
 \label{fig:Shapes}
 \end{figure} % }}}
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-\Blindtext[1]
+\blindtext
+See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
 
 \subsubsection{Subsubsection}
 \Blindtext[1]
