@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/09/21 Custom article format]
+\ProvidesClass{lt_article}[2018/09/22 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -22,6 +22,8 @@
 
 \RequirePackage{lt_basics}
 \RequirePackage{lt_bib}
+
+\colorlet{AccentColour}{RoyalBlue3!50!RoyalBlue4}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,8 +64,8 @@
 
 % And add some colour
 % For defaults (see "Standard Classes" appendix of titlesec manual)
-\titleformat*{\section}      {\sffamily \Large \color{SteelBlue4}}
-\titleformat*{\subsection}   {\sffamily \large \color{SteelBlue4}}
+\titleformat*{\section}      {\sffamily \Large \color{AccentColour}}
+\titleformat*{\subsection}   {\sffamily \large \color{AccentColour}}
 \titleformat*{\subsubsection}{\sffamily \normalsize}
 
 % }}}
@@ -75,7 +77,7 @@
 %\renewcommand{\absnamepos}{flushleft}
 %\setlength{\abstitleskip}{0.0em}
 \AtBeginDocument{\setlength{\abstitleskip}{-\absparindent}}
-\renewcommand{\abstractnamefont}{\sffamily \large \color{SteelBlue4}}
+\renewcommand{\abstractnamefont}{\sffamily \large \color{AccentColour}}
 \renewcommand{\abstracttextfont}{\sffamily \small}
 
 % }}}
@@ -107,7 +109,7 @@
 % Define the main page style
 %\fancypagestyle{fancy}{    % This breaks things
     \fancyhf{}  % Clear all header/footer fields
-    \rhead{\sffamily \textcolor{SteelBlue4}{\@header}}
+    \rhead{\sffamily \textcolor{AccentColour}{\@header}}
     \lhead{\sffamily \textcolor{lightgray}{\leftmark}}
     \renewcommand{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
