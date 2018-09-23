@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_floats}[2018/09/22 Figures, tables, etc.]
+\ProvidesPackage{lt_floats}[2018/09/23 Figures, tables, etc.]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,6 +50,7 @@
     \captionsetup{labelfont={sf,bf}}
     \captionsetup{margin=\parindent}
 
+% https://tex.stackexchange.com/q/13625
 \RequirePackage{subcaption}
     % Redefine these explicitly to stop unwanted inheritance
     \captionsetup[sub]{labelfont={sf,bf,small}}
@@ -62,7 +63,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Figures {{{
 
-\RequirePackage{graphicx} %For importing figures
+\RequirePackage{graphicx}   % \includegraphics{}
 
 % More intuitive trimming / clipping amongst others
 \RequirePackage[Export]{adjustbox}
@@ -71,74 +72,66 @@
 % trim={<left> <bottom> <right> <top>}
 % https://tex.stackexchange.com/a/57420
 
-\RequirePackage{wrapfig} %For adding figures in text
+\RequirePackage{wrapfig}    % Adding figures in text
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tikz {{{
 
 \RequirePackage{tikz}
-
-  %Various tikz libraries
-  \usetikzlibrary{matrix}
-  \usetikzlibrary{calc}
-  \usetikzlibrary{positioning}
-  \usetikzlibrary{shapes}
-  \usetikzlibrary{shapes.multipart}
-  \usepgflibrary{shapes.misc}
-  \usetikzlibrary{arrows}
-  \usetikzlibrary{backgrounds}
-  \usetikzlibrary{fit}
-
-%New command used when overlaying
-\newcommand{\tikzmark}[1]{\tikz[overlay, remember picture] \coordinate (#1);}
-
-%Command used to do relative positioning with an angle
-% e.g. \node[style] (n) [position=270:{\nodeDist} from x] {n};
-% c.f. \node[style] (n) [below=of x] {n};
-\tikzset{
-  position/.style args={#1:#2 from #3}{
-    at=(#3.#1), anchor=#1+180, shift=(#1:#2)
-  }
+\usetikzlibrary{
+    arrows,
+    backgrounds,
+    calc,
+    fit,
+    matrix,
+    positioning,
+    shapes, shapes.multipart, shapes.misc,
+    tikzmark    % Use \tikzmark{<name>} to remember a location
 }
 
-%\RequirePackage{pgfplots} % Lets you draw graphs in tikz
-%  %\pgfplotsset{compat=1.9}
-%  \pgfplotsset{compat=newest}
-
-%Command for a Gaussian distribution
-\newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))} % Gauss function, parameters mu and sigma
+% Command used to do relative positioning with an angle
+% e.g. \node[style] (n) [position=270:{\nodeDist} from x] {n};
+% c.f. \node[style] (n) [below=of x] {n};
+% https://tex.stackexchange.com/a/102266
+\tikzset{
+    position/.style args={#1:#2 from #3}{
+        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    }
+}
 
 % Coloured double arrow
 % http://tex.stackexchange.com/a/72793
+%\draw[double arrow=3pt colored by blue and red] (0,0)  -| (1,1);
 \tikzset{
-  double arrow/.style args={#1 colored by #2 and #3}{
-    -latex,line width=#1,#2, % first arrow
-    postaction={draw,-latex,#3,line width=(#1)/3,shorten <=(#1)/4,shorten >=4.5*(#1)/3}, % second arrow
-  },
+    double arrow/.style args={#1 colored by #2 and #3}{
+        -latex,line width=#1,#2,    % first arrow
+        postaction={                % second arrow
+            draw,-latex,#3,line width=(#1)/3,shorten <=(#1)/4,shorten >=4.5*(#1)/3
+        },
+    },
 }
-%\draw[double arrow=3pt colored by blue!50!black and lime,rounded corners]
-%(1.5,2)  -| (2,0);
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tables {{{
 
-\RequirePackage{multirow}   %For rows in tables
+% See the LaTeX Wikibook for some excellent Leeds United themed examples!
+% https://en.wikibooks.org/wiki/LaTeX/Tables#Spanning
 
-\RequirePackage{colortbl}     %For coloured cells in tables
+\RequirePackage{multirow}   % For columns spanning multiple rows
+
+\RequirePackage{colortbl}   % For coloured cells
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code {{{
 
-% https://tex.stackexchange.com/questions/229355/algorithm-algorithmic-algorithmicx-algorithm2e-algpseudocode-confused
+% Pseudocode
+% https://tex.stackexchange.com/a/230789
 
-\RequirePackage{algorithm} % Provides the float environment for algorithms: \begin{algorithm} ... \end{algorithm}
-
-%\RequirePackage[ruled,lined]{algorithm2e} % For adding pseudocode algorithms
-
-%\RequirePackage{algpseudocode} % Layout for the algorithmicx package
+% Code snippets
+%\RequirePackage{listings}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
