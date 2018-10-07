@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/09/22 Custom article format]
+\ProvidesClass{lt_article}[2018/10/07 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,6 +50,66 @@
 \thanksmarkseries{alph}
 \thanksheadextra{\sffamily}{}
 \thanksfootextra{\sffamily}{}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Redefine author/thanks commands {{{
+
+\RequirePackage{ifthen}
+% Command to append the expanded version of a macro to another macro
+% Fragile! Second macro must be the first thing that appears
+% https://tex.stackexchange.com/a/401230
+\newcommand*{\append}[2]{%
+    \expandafter\g@addto@macro\expandafter#1\expandafter{#2}%
+}
+
+% Redefine \author{}
+% Still works as before i.e. \author{Name1, Name2}
+% But can now add affiliations more naturally i.e.
+% \author[1,2]{Name1}
+% \author[2,3]{Name2}
+% Interface inspired by the authblk package
+% https://stackoverflow.com/a/7314951
+% https://tex.stackexchange.com/a/281515
+% https://tex.stackexchange.com/a/317781
+\let\lt@firstAuthors\@empty
+\let\lt@lastAuthor\@empty
+\renewcommand*{\author}[2][\@empty]{%
+    % First, add superscript if optional argument provided
+    \let\lt@currentAuthor\@empty%
+    \ifthenelse{\equal{#1}{\@empty}}{%
+        \renewcommand*{\lt@currentAuthor}{#2}%
+    }{%
+        \renewcommand*{\lt@currentAuthor}{
+            #2\textsuperscript{\textcolor{gray}{#1}}%
+        }%
+    }%
+    % Then add to storage
+    \ifthenelse{\equal{\lt@firstAuthors}{\@empty}}{%
+        \append{\lt@firstAuthors}{\lt@currentAuthor}%
+    }{%
+        \ifthenelse{\equal{\lt@lastAuthor}{\@empty}}{%
+            \append{\lt@lastAuthor}{\lt@currentAuthor}%
+        }{%
+            \g@addto@macro{\lt@firstAuthors}{, }%
+            \append{\lt@firstAuthors}{\lt@lastAuthor}%
+            \let\lt@lastAuthor\@empty%
+            \append{\lt@lastAuthor}{\lt@currentAuthor}%
+        }%
+    }%
+}
+
+% Finally, decide how we put the pieces together for printing
+\renewcommand*{\@author}{%
+    %\show\lt@firstAuthors
+    %\show\lt@lastAuthor
+    %\show\lt@currentAuthor
+    \ifthenelse{\equal{\lt@lastAuthor}{\@empty}}{%
+        \lt@firstAuthors%
+    }{%
+        \lt@firstAuthors\ \& \lt@lastAuthor%
+    }%
+}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
