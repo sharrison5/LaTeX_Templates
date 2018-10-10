@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/10/07 Custom article format]
+\ProvidesClass{lt_article}[2018/10/10 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,6 +56,7 @@
 % Redefine author/thanks commands {{{
 
 \RequirePackage{ifthen}
+\RequirePackage{etoolbox}
 % Command to append the expanded version of a macro to another macro
 % Fragile! Second macro must be the first thing that appears
 % https://tex.stackexchange.com/a/401230
@@ -63,7 +64,9 @@
     \expandafter\g@addto@macro\expandafter#1\expandafter{#2}%
 }
 
-% Redefine \author{}
+%------------------------------------------------------------------------------
+% Redefine \author {{{
+
 % Still works as before i.e. \author{Name1, Name2}
 % But can now add affiliations more naturally i.e.
 % \author[1,2]{Name1}
@@ -110,6 +113,51 @@
         \lt@firstAuthors\ \& \lt@lastAuthor%
     }%
 }
+
+% }}}
+%------------------------------------------------------------------------------
+% \affiliation and \corresponding {{{
+
+% Store everything provided by \affiliation{}
+\let\lt@affiliations\@empty
+\newcommand*{\affiliation}[1]{%
+    \g@addto@macro{\lt@affiliations}{%
+        \protect\stepcounter{footnote}%
+        \protect\footnotetext{#1}%
+    }
+}
+
+% Store corresponding author
+\newcommand*{\corrmark}{\dagger}
+\newcommand*{\corresponding}[1]{%
+    \newcommand*{\lt@corresponding}{#1}%
+}
+
+\newcommand*{\printAffiliations}{%
+    % Affiliations
+    \renewcommand*{\thefootnote}{\alph{footnote}}%
+    \renewcommand*{\@makefnmark}{%
+        \textsuperscript{\sffamily\textcolor{gray}{\@thefnmark}}%
+    }%
+    \lt@affiliations%
+    % Corresponding
+    \ifdef{\lt@corresponding}{%
+        \renewcommand*{\@makefnmark}{%
+            \textsuperscript{\sffamily\textcolor{gray}{\corrmark}}%
+        }%
+        \protect\footnotetext{\lt@corresponding\smallskip}%
+    }{%
+    }%
+    % Reset everything
+    \setcounter{footnote}{0}%
+    \renewcommand*{\thefootnote}{\arabic{footnote}}%
+    \renewcommand*{\@makefnmark}{%
+        \textsuperscript{\@thefnmark}%
+    }%
+}
+
+% }}}
+%------------------------------------------------------------------------------
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

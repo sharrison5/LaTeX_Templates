@@ -23,9 +23,16 @@
 
 \title{Template for the \texttt{lt\_article} class}
 %\author{A.~N.~Author, B.~N.~Author \& C.~N.~Author}
-\author[1,\dagger]{A.~N.~Author}
-\author[1,2]{B.~N.~Author}
-\author[3]{C.~N.~Author}
+\author[a,\corrmark]{A.~N.~Author}
+\author[a,b]{B.~N.~Author}
+\author[c]{C.~N.~Author}
+\affiliation{Institution 1}
+\affiliation{Institution 2}
+\affiliation{Institution 3}
+\corresponding{%
+    Corresponding author:
+    \hiddenurl{mailto:}{a.author@institution.org}{}
+}
 \date{\today}
 \header{Article Template}
 
@@ -38,6 +45,7 @@
 
 % Generate the title
 \maketitle
+\printAffiliations
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract} % {{{
@@ -49,7 +57,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} % {{{
 
-\blindtext See any of \textcite{Bayes}, the online resources at
+\blindtext
+Which should makes things clear\footnote{Test}.
+See any of \textcite{Bayes}, the online resources at
 \hiddenurl{https://}{ctan.org}{/pkg/hyperref}, or the examples in
 \Ref{Section}{sec:Examples} for more information \autocite{GravitationalWaves}.
 
