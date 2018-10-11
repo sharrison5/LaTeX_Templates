@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_maths}[2018/09/16 Mathematics style and commands]
+\ProvidesPackage{lt_maths}[2018/10/11 Mathematics style and commands]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,6 +138,10 @@
 
 % Useful specific overloads
 \newcommand*{\lnFunc}[1]{\Func{\ln}{#1}}
+
+% To redefine \sqrt{x} such that it 'closes' see the following:
+% https://en.wikibooks.org/wiki/LaTeX/Mathematics#Roots
+% https://tex.stackexchange.com/q/29834
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

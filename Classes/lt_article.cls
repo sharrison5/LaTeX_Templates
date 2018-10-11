@@ -46,15 +46,15 @@
 \predate{\begin{adjustwidth}{4em}{} \begin{flushright} \sffamily}
 \postdate{\end{flushright} \end{adjustwidth}} % \vspace{1em}}
 
-% And change affiliation symbols to letters
-\thanksmarkseries{alph}
-\thanksheadextra{\sffamily}{}
-\thanksfootextra{\sffamily}{}
-
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Redefine author/thanks commands {{{
 
+% Useful background on \maketitle and \thanks
+% https://tex.stackexchange.com/a/452985
+% https://tex.stackexchange.com/a/289545
+
+% Useful \if commands
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
 % Command to append the expanded version of a macro to another macro
@@ -209,7 +209,7 @@
 % Commands to get header text, in the same way as e.g. \title{}
 % https://stackoverflow.com/q/2833954
 % \header{blah} stores blah as the output of \@header{}
-\newcommand*{\header}[1]{\renewcommand{\@header}{#1}}
+\newcommand*{\header}[1]{\renewcommand*{\@header}{#1}}
 \newcommand*{\@header}{}    % Put the default header in these braces if required
 
 \RequirePackage{fancyhdr}
@@ -222,7 +222,7 @@
 
 % Redefine \sectionmark so that it puts the section info in \leftmark
 % Must be after \pagestyle{fancy} so defaults are set
-\renewcommand{\sectionmark}[1]{\markboth{\thesection.~#1}{}}
+\renewcommand*{\sectionmark}[1]{\markboth{\thesection.~#1}{}}
 % This also stops these being uppercase, so we need to fix the bibliography too
 \renewcommand*{\abx@MakeMarkcase}[1]{#1}
 % https://tex.stackexchange.com/a/432120
@@ -233,7 +233,7 @@
     \fancyhf{}  % Clear all header/footer fields
     \rhead{\sffamily \textcolor{AccentColour}{\@header}}
     \lhead{\sffamily \textcolor{lightgray}{\leftmark}}
-    \renewcommand{\headrulewidth}{0.75pt}
+    \renewcommand*{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 %}
 
@@ -241,7 +241,7 @@
 \fancypagestyle{plain}{
     \fancyhf{}  % Clear all header/footer fields
     \rhead{\sffamily \textcolor{lightgray}{\@header}}
-    \renewcommand{\headrulewidth}{0.75pt}
+    \renewcommand*{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 }
 
