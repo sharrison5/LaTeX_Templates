@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/10/10 Custom article format]
+\ProvidesClass{lt_article}[2018/10/11 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,13 +184,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Abstract formatting {{{
 
-\RequirePackage[runin]{abstract}
-
-%\renewcommand{\absnamepos}{flushleft}
-%\setlength{\abstitleskip}{0.0em}
-\AtBeginDocument{\setlength{\abstitleskip}{-\absparindent}}
-\renewcommand{\abstractnamefont}{\sffamily \large \color{AccentColour}}
-\renewcommand{\abstracttextfont}{\sffamily \small}
+\if@twocolumn
+    \renewenvironment*{abstract}{%
+        \begin{adjustwidth}{\parindent}{\parindent}
+            \subsection*{Abstract}\vspace{-1ex}
+            \sffamily \bfseries
+    }{%
+        \end{adjustwidth}%
+    }
+\else
+    \renewenvironment*{abstract}{%
+        \begin{adjustwidth}{2\parindent}{2\parindent}
+            \subsection*{Abstract}\vspace{-1ex}
+            \sffamily \small
+    }{%
+        \end{adjustwidth}%
+    }
+\fi
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
