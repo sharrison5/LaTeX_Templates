@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/10/11 Custom article format]
+\ProvidesClass{lt_article}[2018/10/12 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,8 +23,6 @@
 \RequirePackage{lt_basics}
 \RequirePackage{lt_bib}
 \RequirePackage{lt_floats}
-
-\colorlet{AccentColour}{RoyalBlue3!50!RoyalBlue4}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,7 +82,7 @@
         \renewcommand*{\lt@currentAuthor}{#2}%
     }{%
         \renewcommand*{\lt@currentAuthor}{
-            #2\textsuperscript{\textcolor{gray}{#1}}%
+            #2\textsuperscript{\textcolor{MidText}{#1}}%
         }%
     }%
     % Then add to storage
@@ -137,13 +135,13 @@
     % Affiliations
     \renewcommand*{\thefootnote}{\alph{footnote}}%
     \renewcommand*{\@makefnmark}{%
-        \textsuperscript{\sffamily\textcolor{gray}{\@thefnmark}}%
+        \textsuperscript{\sffamily\textcolor{MidText}{\@thefnmark}}%
     }%
     \lt@affiliations%
     % Corresponding
     \ifdef{\lt@corresponding}{%
         \renewcommand*{\@makefnmark}{%
-            \textsuperscript{\sffamily\textcolor{gray}{\corrmark}}%
+            \textsuperscript{\sffamily\textcolor{MidText}{\corrmark}}%
         }%
         \protect\footnotetext{\lt@corresponding\smallskip}%
     }{%
@@ -232,7 +230,7 @@
 %\fancypagestyle{fancy}{    % This breaks things
     \fancyhf{}  % Clear all header/footer fields
     \rhead{\sffamily \textcolor{AccentColour}{\@header}}
-    \lhead{\sffamily \textcolor{lightgray}{\leftmark}}
+    \lhead{\sffamily \textcolor{LightText}{\leftmark}}
     \renewcommand*{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 %}
@@ -240,7 +238,7 @@
 % And redefine the plain style for the title page
 \fancypagestyle{plain}{
     \fancyhf{}  % Clear all header/footer fields
-    \rhead{\sffamily \textcolor{lightgray}{\@header}}
+    \rhead{\sffamily \textcolor{LightText}{\@header}}
     \renewcommand*{\headrulewidth}{0.75pt}
     \cfoot{\thepage}
 }

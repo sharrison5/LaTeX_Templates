@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_basics}[2018/09/22 Custom LuaTeX style]
+\ProvidesPackage{lt_basics}[2018/10/12 Custom LuaTeX style]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,6 +149,22 @@
 % Colours {{{
 
 \RequirePackage[svgnames, x11names]{xcolor}
+%\extractcolorspec{AccentColour}{\printColour}
+%\printColour
+
+% Predefine sensible default colours we can use elsewhere if necessary
+\definecolor{DarkText}{gray}{0.3}
+\definecolor{MidText}{gray}{0.45}
+\definecolor{LightText}{gray}{0.75}
+
+% Headers etc
+\colorlet{AccentColour}{RoyalBlue3!50!RoyalBlue4}
+% RGB(49, 80, 173)
+
+% Hyperref
+\colorlet{CiteColour}{green!30!MidText}
+\colorlet{LinkColour}{VioletRed4!75!red}
+\colorlet{UrlColour}{MidText}
 
 % Some useful extra colours
 \definecolor{CambridgeBlue}{RGB}{163,193,173}
