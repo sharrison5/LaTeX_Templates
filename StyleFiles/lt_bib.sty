@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_bib}[2018/09/16 Bibliography formatting]
+\ProvidesPackage{lt_bib}[2018/10/12 Bibliography formatting]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,6 +64,9 @@
     eprint=false
 }
 \AtEveryBibitem{\clearfield{note}}
+%\AtEveryBibitem{\clearlist{location}}
+%\AtEveryBibitem{\clearlist{publisher}}
+%\AtEveryBibitem{\clearfield{series}}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{lt_maths}[2018/10/11 Mathematics style and commands]
+\ProvidesPackage{lt_maths}[2018/10/12 Mathematics style and commands]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,6 +138,14 @@
 
 % Useful specific overloads
 \newcommand*{\lnFunc}[1]{\Func{\ln}{#1}}
+
+% \overbraceColour{colour}{maths}{overbraceLabel}
+\newcommand*{\overbraceColour}[3]{%
+    \textcolor{#1}{\overbrace{\textcolor{black}{#2}}^{#3}}%
+}
+\newcommand*{\underbraceColour}[3]{%
+    \textcolor{#1}{\underbrace{\textcolor{black}{#2}}_{#3}}%
+}
 
 % To redefine \sqrt{x} such that it 'closes' see the following:
 % https://en.wikibooks.org/wiki/LaTeX/Mathematics#Roots
