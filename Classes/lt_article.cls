@@ -173,7 +173,7 @@
 % For defaults (see "Standard Classes" appendix of titlesec manual)
 \titleformat*{\section}      {\sffamily \Large \color{AccentColour}}
 \titleformat*{\subsection}   {\sffamily \large \color{AccentColour}}
-\titleformat*{\subsubsection}{\sffamily \normalsize}
+\titleformat*{\subsubsection}{\sffamily \normalsize \itshape}
 
 % Colour figure captions too
 \captionsetup{labelfont+={color=AccentColour}}
