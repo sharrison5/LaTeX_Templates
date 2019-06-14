@@ -14,7 +14,7 @@ export TEXINPUTS
 # https://tex.stackexchange.com/a/50721
 # https://stackoverflow.com/a/23332194
 
-TEXOPTIONS = -lualatex -bibtex -cd
+TEXOPTIONS = -lualatex -bibtex -cd -r LaTeX_Templates/latexmkrc
 
 # Hook for adding extra args at the command line
 TEXTRAS ?=
