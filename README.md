@@ -9,8 +9,17 @@ and [`unicode-math`](https://ctan.org/pkg/unicode-math)), and preferred over
 XeTeX because of the more advanced features available in the
 [`microtype`](https://ctan.org/pkg/microtype) package.
 
-To compile the examples:
+```shell
+git clone --recurse-submodules \
+    https://github.com/sharrison5/LaTeX_Templates.git
+
+# To use the provided Makefile
+ln -s LaTeX_Templates/Makefile .
+make
 ```
+
+To compile the examples:
+```shell
 cd LateX_Templates/
 export TEXINPUTS="$PWD/StyleFiles:$PWD/Classes:$TEXINPUTS"
 latexmk -lualatex [-g|-gg] [-pv] -cd Templates/Article.tex
