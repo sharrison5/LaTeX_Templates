@@ -14,6 +14,8 @@ export TEXINPUTS
 # https://tex.stackexchange.com/a/50721
 # https://stackoverflow.com/a/23332194
 
+TEXOPTIONS = -lualatex -bibtex -cd
+
 # Hook for adding extra args at the command line
 TEXTRAS ?=
 
@@ -21,23 +23,22 @@ TEXTRAS ?=
 # Build rules
 
 .DEFAULT_GOAL := help
-.PHONY: clean cleaner help
+.PHONY: build clean cleaner help
 
 help:
-	@echo "make [-B] [TEXTRAS=\"[-g|-gg] [-pv]\"] <document.pdf>"
+	@echo "make build [TEXTRAS=\"[-g|-gg] [-pv]\"] file=<document.tex>"
 	@echo "make clean[er] file=<document.tex>"
 
 # Make PDFs from .tex files
-# $<: the name of the prerequisite of the rule (a .tex file)
-%.pdf: %.tex
-	latexmk -lualatex $(TEXTRAS) -cd $<
+build:
+	latexmk $(TEXOPTIONS) $(TEXTRAS) $(file)
 
 # Clean up
 # https://tex.stackexchange.com/a/83384
 clean:
-	latexmk -lualatex -bibtex -cd -c $(file)
+	latexmk $(TEXOPTIONS) -c $(file)
 
 cleaner:
-	latexmk -lualatex -bibtex -cd -C $(file)
+	latexmk $(TEXOPTIONS) -C $(file)
 
 ###############################################################################
