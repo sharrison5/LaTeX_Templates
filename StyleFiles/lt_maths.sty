@@ -68,6 +68,8 @@
 % https://tex.stackexchange.com/q/410456
 \newcommand*{\del}{\mathop{\kern0pt \nabla\!} {}}
 % del/nabla doesn't take an argument as we often want a subscript
+% And a discrete version
+\newcommand*{\dder}[1]{\mathop{\kern0pt \mupDelta\!} {#1}}
 
 % Useful functions
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -119,6 +121,9 @@
 % Determinant: | something |
 \newcommand*{\determinant}[1]{\lvert #1 \rvert}
 \newcommand*{\logdet}[1]{\Func{\ln}{\determinant{#1}}}
+
+% Absolute value: | something |
+\newcommand*{\abs}[1]{\lvert #1 \rvert}
 
 % Distribution: something ( something )
 \newcommand*{\dist}[2]{\func{#1}{#2}}
