@@ -16,6 +16,13 @@
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prerequisites {{{
+
+% Simplify commands if we are not using LuaTeX
+\RequirePackage{iftex}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages {{{
 
 % Various improvements to math mode
@@ -28,13 +35,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set maths style and font {{{
 
-% Has to be the last maths package loaded
-% See https://tex.stackexchange.com/q/425098 for font examples
-\RequirePackage[math-style=ISO, bold-style=ISO]{unicode-math}
-    \setmathfont{Libertinus Math}
-    \setmathfont{Latin Modern Math}[range=cal]
-% N.B. \mathcal and \mathscr are essentially synonymous. However, by using the
-% far less curly Latin Modern for \mathcal we can make them appear different.
+\unless\ifLuaTeX
+    \RequirePackage{amsfonts}
+    \newcommand*{\symbf}{\mathbf}
+    \newcommand*{\symcal}{\mathcal}
+    \newcommand*{\symfrak}{\mathfrak}
+    \newcommand*{\symup}{\mathrm}
+\else
+    % Has to be the last maths package loaded
+    % See https://tex.stackexchange.com/q/425098 for font examples
+    \RequirePackage[math-style=ISO, bold-style=ISO]{unicode-math}
+        \setmathfont{Libertinus Math}
+        \setmathfont{Latin Modern Math}[range=cal]
+    % N.B. \mathcal and \mathscr are essentially synonymous. However, by using
+    % the far less curly Latin Modern for \mathcal we can make them appear
+    % different.
+\fi
 
 % ISO Standard:
 % https://www.iso.org/standard/31887.html
@@ -53,29 +69,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Operators {{{
 
+% Always prefer \operatorname and \DeclareMathOperator
+% https://tex.stackexchange.com/a/84308
+
 % Note that operators work properly with sub/superscripts
 % https://tex.stackexchange.com/a/34825
 
-% Differentiation: \der{x} and \pder{x}
-\newcommand*{\der}[1]{\operatorname{d\!} {#1}}
-% https://tex.stackexchange.com/a/17894A
-% The {} are needed to force insertion of a thin space
-\newcommand*{\pder}[1]{\mathop{\kern0pt \partial\!} {#1}}
-% Similar in spirit, but non-latin characters can be temperamental when
-% changing to the operator font
-% https://tex.stackexchange.com/a/41267
-% https://tex.stackexchange.com/a/84308
-% https://tex.stackexchange.com/q/410456
-\newcommand*{\del}{\mathop{\kern0pt \nabla\!} {}}
-% del/nabla doesn't take an argument as we often want a subscript
-% And a discrete version
-\newcommand*{\dder}[1]{\mathop{\kern0pt \mupDelta\!} {#1}}
+% Greek letter functions: the implied font switch can mean e.g.
+% \DeclareMathOperator{\gammaFunc}{\Gamma} doesn't behave
+% https://tex.stackexchange.com/q/477662
+
+% Differentiation: \der{x} etc
+\unless\ifLuaTeX
+    \newcommand*{\der}[1]{d #1}
+    \newcommand*{\pder}[1]{\partial #1}
+    \newcommand*{\dder}[1]{\Delta #1}
+    \newcommand*{\del}{\nabla}
+\else
+    % https://tex.stackexchange.com/a/178948
+    % The {} are needed to force insertion of a thin space
+    \newcommand*{\der}[1]{\operatorname{d\!} {#1}}
+    % Partial
+    \newcommand*{\pder}[1]{\operatorname{\symup{\partial}\!} {#1}}
+    % Discrete
+    \newcommand*{\dder}[1]{\operatorname{\increment\!} {#1}}
+    % del/nabla doesn't take an argument as we often want a subscript
+    \newcommand*{\del}{\operatorname{\symup{\nabla}\!} {}}
+\fi
 
 % Useful functions
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\deltaFunc}{\symup{\delta}}
+\DeclareMathOperator{\gammaFunc}{\symup{\Gamma}}
+%\DeclareMathOperator{\gammaFunc}{\symbol{"00393}}
+\DeclareMathOperator{\psiFunc}{\symup{\psi}}
+\DeclareMathOperator{\digammaFunc}{\symup{\psi}}
 
 % Linear algebra
 \DeclareMathOperator{\transpose}{T}
@@ -88,23 +119,16 @@
 \DeclareMathOperator{\cov}{cov}
 \DeclareMathOperator{\corr}{corr}
 
-% Greek letter functions - as with \pder{x}, the implied font switch can mean
-% e.g. \DeclareMathOperator{\deltaFunc}{\delta} doesn't behave
-\DeclareMathOperator{\deltaFunc}{\mupdelta}
-\DeclareMathOperator{\gammaFunc}{\mupGamma}
-\DeclareMathOperator{\psiFunc}{\muppsi}
-\DeclareMathOperator{\digammaFunc}{\muppsi}
-
 % Probability
 \DeclareMathOperator{\E}{E}
 \DeclareMathOperator{\KL}{D_{KL}}
 \DeclareMathOperator{\FreeEnergy}{\symcal{F}}
 
 % Distributions
-\DeclareMathOperator{\betaDist}{\mupbeta}
-\DeclareMathOperator{\deltaDist}{\mupdelta}
+\DeclareMathOperator{\betaDist}{\symup{\beta}}
+\DeclareMathOperator{\deltaDist}{\symup{\delta}}
 \DeclareMathOperator{\dirichletDist}{Dir}
-\DeclareMathOperator{\gammaDist}{\mupGamma}
+\DeclareMathOperator{\gammaDist}{\symup{\Gamma}}
 \DeclareMathOperator{\normalDist}{\symcal{N}}
 \DeclareMathOperator{\matrixNormalDist}{\symcal{MN}}
 \DeclareMathOperator{\wishartDist}{\symcal{W}}
