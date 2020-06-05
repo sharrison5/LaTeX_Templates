@@ -12,7 +12,7 @@
 % Requires at least LaTeX version 2e.
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{lt_article}[2018/10/12 Custom article format]
+\ProvidesClass{lt_article}[2020/06/05 Custom article format]
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,7 +53,7 @@
 % https://tex.stackexchange.com/a/289545
 
 % Useful \if commands
-\RequirePackage{ifthen}
+\RequirePackage{ifthen}  % https://tex.stackexchange.com/a/13867
 \RequirePackage{etoolbox}
 % Command to append the expanded version of a macro to another macro
 % Fragile! Second macro must be the first thing that appears
