@@ -1,0 +1,54 @@
+% lt_minimal.sty
+% Sam Harrison 2020
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package info {{{
+
+% Requires at least LaTeX version 2e.
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lt_minimal}[2018/10/12 Minimal style]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Includes {{{
+
+\RequirePackage{iftex}
+\ifPDFTeX
+    \RequirePackage[utf8]{inputenc}
+    \RequirePackage[T1]{fontenc}
+\fi
+
+% lt_basics.sty
+\RequirePackage[british]{babel}
+\RequirePackage{csquotes}
+\RequirePackage{siunitx}
+
+% lt_floats.sty
+\RequirePackage{graphicx}
+\RequirePackage[Export]{adjustbox}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands {{{
+
+% lt_basics.sty
+\newcommand*{\eg}{e.g.\ }
+\newcommand*{\ie}{i.e.\ }
+\newcommand*{\cf}{cf.\ }
+\newcommand*{\etc}{etc.\ }
+
+% lt_hyperref.sty
+\newcommand*{\Ref}[2]{#1~\ref{#2}}
+\newcommand*{\SubRef}[2]{#1~\subref{#2}}
+\newcommand*{\url}[1]{\texttt{#1}}
+\newcommand*{\hurl}[1]{\url{http://#1}}
+\newcommand*{\hsurl}[1]{\url{https://#1}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
