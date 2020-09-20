@@ -77,7 +77,7 @@
 \RequirePackage{hyphenat}   % Defines command \nohyphens{text}
 
 % Figure \ref{fig:label} --> \Ref{Figure}{fig:label}
-\newcommand*{\Ref}[2]{\nohyphens{\hyperref[#2]{#1~\ref*{#2}}}}
+\renewcommand*{\Ref}[2]{\nohyphens{\hyperref[#2]{#1~\ref*{#2}}}}
 
 % Panel \subref{subfig:label} --> \SubRef{Panel}{subfig:label}
 \newcommand*{\SubRef}[2]{\nohyphens{\hyperref[#2]{#1~\subref*{#2}}}}
