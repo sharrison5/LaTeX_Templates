@@ -31,11 +31,13 @@ TEXTRAS ?=
 .PHONY: help pdf html docx clean cleaner check-file
 
 help:
-	@echo $(TEXINPUTS)
+	@echo "make help"
 	@echo "make pdf [TEXTRAS=\"[-g|-gg] [-pv]\"] file=<document.tex>"
 	@echo "make clean[er] file=<document.tex>"
 	@echo "make html file=<document.tex>"
 	@echo "make docx file=<document.tex> bibliography=<document.bib>"
+	@echo ""
+	@echo "TEXINPUTS=\"$(TEXINPUTS)\""
 
 # Make PDFs from .tex files
 pdf: check-file
