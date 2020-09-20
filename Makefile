@@ -28,7 +28,7 @@ TEXTRAS ?=
 # Build rules
 
 .DEFAULT_GOAL := help
-.PHONY: help pdf html docx clean cleaner check-file
+.PHONY: help pdf html docx clean cleaner check-file check-bib
 
 help:
 	@echo "make help"
@@ -48,7 +48,7 @@ html: check-file
 	make4ht $(TEXTRAS) --format html5 --output-dir $(file:.tex=/) $(file)
 
 # Make Word document from .tex files via `pandoc`
-docx: check-file
+docx: check-file check-bib
 	pandoc --to=docx \
 	    --filter=pandoc-crossref --filter=pandoc-citeproc \
 	    --bibliography=$(bibliography) --output=$(file:.tex=.docx) $(file)
@@ -66,6 +66,10 @@ cleaner: check-file
 check-file:
 ifndef file
 	$(error `file` is undefined)
+endif
+check-bib:
+ifndef bibliography
+	$(error `bibliography` is undefined)
 endif
 
 ###############################################################################
