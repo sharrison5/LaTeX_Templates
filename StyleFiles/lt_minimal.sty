@@ -28,6 +28,9 @@
 \RequirePackage[british]{babel}
 \RequirePackage{csquotes}
 \RequirePackage{siunitx}
+% https://github.com/jgm/pandoc/issues/3587
+% https://github.com/jgm/pandoc/pull/3823
+\renewcommand*{\num}[1]{#1}
 
 % lt_floats.sty
 \RequirePackage{graphicx}
