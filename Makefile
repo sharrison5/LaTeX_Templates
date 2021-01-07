@@ -50,8 +50,9 @@ html: check-file
 # Make Word document from .tex files via `pandoc`
 docx: check-file check-bib
 	pandoc --to=docx \
-	    --filter=pandoc-crossref --filter=pandoc-citeproc \
-	    --bibliography=$(bibliography) --output=$(file:.tex=.docx) $(file)
+	    --filter=pandoc-crossref \
+	    --citeproc --bibliography=$(bibliography) \
+	    --output=$(file:.tex=.docx) $(file)
 
 # Clean up
 # https://tex.stackexchange.com/a/83384

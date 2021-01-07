@@ -34,8 +34,8 @@ when using `make`. For more information see
 ### Alternative formats
 
 Using a stripped down article format, it is possible to produce either `.docx`
-files via [pandoc](https://pandoc.org/) (with `pandoc-crossref` and
-`pandoc-citeproc`), or HTML via [TeX4ht](https://tug.org/tex4ht/).
+files via [pandoc](https://pandoc.org/) (version >= 2.11, along with
+`pandoc-crossref`), or HTML via [TeX4ht](https://tug.org/tex4ht/).
 
 The simplified preamble should be something like the following:
 ```tex
