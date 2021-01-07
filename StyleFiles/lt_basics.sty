@@ -217,6 +217,25 @@
     }%
 }
 
+% Text highlighting
+% https://tex.stackexchange.com/a/59342
+\RequirePackage{mdframed}
+\newmdenv[
+    hidealllines=true,
+    %backgroundcolor=AccentColour!10,
+    backgroundcolor=LightYellow1,
+    innertopmargin=5pt,
+    innerbottommargin=5pt,
+    innerleftmargin=5pt,
+    innerrightmargin=5pt,
+    leftmargin=-5pt,
+    rightmargin=-5pt
+]{highlight}
+%\RequirePackage{soul}
+%\sethlcolor{LightYellow1}
+% No luck: \hl{} seems not to like e.g. \cite or \SI commands
+% https://tex.stackexchange.com/a/405423
+
 % Command for a quote environment with an author
 %\begin{aquote}{Author}
 %     ...
