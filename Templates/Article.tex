@@ -69,7 +69,7 @@
 Which should makes things clear\footnote{Test footnote.}.
 See any of \textcite{Bayes}, the online resources at
 \hiddenurl{https://}{ctan.org}{/pkg/hyperref}, or the examples in
-\Ref{Section}{sec:Examples} for more information \autocite{GravitationalWaves}.
+\Ref{Section}{sec:Fonts} for more information \autocite{GravitationalWaves}.
 
 %------------------------------------------------------------------------------
 \subsection{Subsection} % {{{
@@ -206,9 +206,8 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Examples} % {{{
-\label{sec:Examples}
+\section{Font Variations} % {{{
+\label{sec:Fonts}
 
 \textrm{\blindtext}
 
@@ -228,24 +227,47 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
 
 \texttt{\blindtext}
 
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
+\section{Common Commands} % {{{
+\label{sec:Commands}
 
 \begin{itemize}
 
-    \item \uline{1234567\sout{890}} \num{12345} \SI{67.8956}{\um/\s^2}
-        \SI{9999}{\hertz} \ang{90}
+    \item Abbreviations:
+        \eg \ie \cf \etc
 
-    \item \LuaTeX\ \LuaLaTeX
+    \item Citations:
+        \textcite{Bayes};
+        \autocite{GravitationalWaves}.
 
-    \item \enquote{blah \enquote{blah}} blah
+    \item Links:
+        \hurl{insecure-example.com};
+        \hsurl{secure-example.com};
+        \hiddenurl{mailto:}{email@example.com}{}.
 
-    \item \eg \ie \cf \etc
+    \item Numbers \& units:
+        \num{12345};
+        \SI{67.8956}{\um/\s^2};
+        \SI{\approx 9999}{Hz};
+        \ang{90}.
 
-    \item Quoi? \textit{Journal}
+    \item Quotations:
+        \enquote{blah \enquote{blah}} blah.
 
-    \item ff fi fl ffi fb fh fj fk ft Qu Th
+    \item References:
+        \Ref{Figure}{fig:Shapes};
+        \SubRef{Panel}{subfig:Rectangle}.
 
-    \item \textsf{ff fi fl ffi fb fh fj fk ft Qu Th}
+    \item Typography:
+    \begin{itemize}
+        \item \LuaTeX\ \LuaLaTeX
+        \item Quoi? \textit{Journal}
+        \item ff fi fl ffi fb fh fj fk ft Qu Th
+        \item \textsf{ff fi fl ffi fb fh fj fk ft Qu Th}
+        \item \uline{1234567\sout{890}}
+    \end{itemize}
 
 \end{itemize}
 
