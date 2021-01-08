@@ -1,0 +1,124 @@
+% Article.tex
+% Sam Harrison 2021
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX TS-program = LuaLaTeX
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+% make -f LaTeX_Templates/Makefile pdf TEXTRAS="-pv" file=Article.tex
+% make -f LaTeX_Templates/Makefile clean file=Article.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble {{{
+
+\documentclass[a4paper, 11pt]{lt_article}
+\usepackage{lt_maths}
+\usepackage{lt_utilities}
+\usepackage{lt_hyperref}
+%\usepackage[print]{lt_hyperref}
+
+\title{Template for the \texttt{lt\_article} class}
+\author[a,\corrmark]{A.~N.~Author}
+\author[a,b]{B.~N.~Author}
+\author[c]{C.~N.~Author}
+\affiliation{Institution 1}
+\affiliation{Institution 2}
+\affiliation{Institution 3}
+\corresponding{%
+    Corresponding author:
+    \hiddenurl{mailto:}{a.author@institution.org}{}
+}
+\date{\today}
+\header{Article Template}
+
+%------------------------------------------------------------------------------
+% Alternative for lt_minimal {{{
+
+%\documentclass[a4paper, 11pt]{article}
+%\usepackage{lt_minimal}
+%\usepackage{lt_bib}
+%\usepackage{lt_maths}
+%\newcommand*{\printAffiliations}{}
+
+%\title{Template for the \texttt{lt\_article} class}
+%\author{A.~N.~Author, B.~N.~Author \& C.~N.~Author}
+%\date{\today}
+
+% }}}
+%------------------------------------------------------------------------------
+% Redefinitions for supplementary {{{
+
+% Indicate supplementary in names of figures/tables
+%\captionsetup[figure]{name=Supplementary Figure}
+%\captionsetup[table]{name=Supplementary Table}
+%\renewcommand{\thefigure}{S\arabic{figure}}
+%\renewcommand{\thetable}{S\arabic{table}}
+
+% }}}
+%------------------------------------------------------------------------------
+
+\addbibresource{\string~/Bibliography.bib}
+
+%\graphicspath{{Figures/}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\printAffiliations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract} % {{{
+
+    Abstract.
+
+\end{abstract} % }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section} % {{{
+\label{sec:Section}
+
+Text.
+
+%------------------------------------------------------------------------------
+\subsection{Subsection} % {{{
+
+Text.
+
+% }}}
+%------------------------------------------------------------------------------
+\subsection{Subsection} % {{{
+
+Text.
+
+% }}}
+%------------------------------------------------------------------------------
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{figure}[htbp] % {{{
+\centering
+\includegraphics[width=0.95\linewidth]{Figure.pdf}
+\caption{
+    Caption.
+}
+\label{fig:Figure}
+\end{figure} % }}}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography {{{
+
+\newrefcontext[sorting=nyt]
+\printbibliography
+\newrefcontext[sorting=ynt]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
