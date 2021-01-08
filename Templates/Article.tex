@@ -66,7 +66,7 @@
 \section{Introduction} % {{{
 
 \blindtext
-Which should makes things clear\footnote{Test}.
+Which should makes things clear\footnote{Test footnote.}.
 See any of \textcite{Bayes}, the online resources at
 \hiddenurl{https://}{ctan.org}{/pkg/hyperref}, or the examples in
 \Ref{Section}{sec:Examples} for more information \autocite{GravitationalWaves}.
@@ -170,6 +170,14 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
 \subsubsection{Subsubsection}
 \Blindtext[1]
 
+\begin{enumerate}
+    \item \blindtext
+
+    \item \blindtext
+
+    \item \blindtext
+\end{enumerate}
+
 % }}}
 %------------------------------------------------------------------------------
 \subsection{Subsection} % {{{
@@ -215,7 +223,6 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
 \newpage
 
 \begin{itemize}
-%\begin{enumerate}[label=\Roman*., widest*=4]%, itemindent=\parindent]
 
     \item \uline{1234567\sout{890}} \num{12345} \SI{67.8956}{\um/\s^2}
         \SI{9999}{\hertz} \ang{90}
@@ -233,7 +240,10 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
     \item \textsf{ff fi fl ffi fb fh fj fk ft Qu Th}
 
 \end{itemize}
-%\end{enumerate}
+
+\begin{highlight}
+    \blindtext
+\end{highlight}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
