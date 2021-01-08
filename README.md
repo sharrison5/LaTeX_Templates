@@ -21,7 +21,7 @@ make clean[er] file=<document.tex>
 
 # To compile the examples
 cd LateX_Templates/
-make pdf file=Templates/Article.tex
+make pdf file=Examples/Article.tex
 ```
 
 Note that to use the templates we need to set the `TEXINPUTS` variable so that
