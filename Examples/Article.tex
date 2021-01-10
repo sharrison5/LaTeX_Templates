@@ -31,7 +31,7 @@
 \date{\today}
 \header{Example Article (v0.2.0)}
 
-\addbibresource{PlaceholderBibliography.bib} % \string~
+\addbibresource{PlaceholderBibliography.bib}
 
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,6 +58,7 @@
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} % {{{
+\label{sec:Introduction}
 
 \blindtext
 Which should makes things clear\footnote{Test footnote.}.
@@ -115,6 +116,7 @@ See any of \textcite{Bayes}, the online resources at
 % }}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results} % {{{
+\label{sec:Results}
 
 %------------------------------------------------------------------------------
 \subsection{Subsection} % {{{
@@ -237,8 +239,8 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
         \autocite{GravitationalWaves}.
 
     \item Links:
-        \hurl{insecure-example.com};
-        \hsurl{secure-example.com};
+        \hurl{insecure.example.com};
+        \hsurl{secure.example.com};
         \hiddenurl{mailto:}{email@example.com}{}.
 
     \item Numbers \& units:
@@ -251,6 +253,7 @@ See \Ref{Figure}{fig:Shapes}, specifically \SubRef{Panel}{subfig:Rectangle}.
         \enquote{blah \enquote{blah}} blah.
 
     \item References:
+        \hyperref[sec:Introduction]{Introduction};
         \Ref{Figure}{fig:Shapes};
         \SubRef{Panel}{subfig:Rectangle}.
 

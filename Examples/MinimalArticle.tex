@@ -1,0 +1,128 @@
+% MinimalArticle.tex
+% Sam Harrison 2021
+% MIT License: a full version of the license is included in the LICENSE file.
+
+% For TeXShop, TeXWorks, etc
+% !TEX TS-program = LuaLaTeX
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-GB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble {{{
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage{lt_minimal}
+\usepackage{lt_bib}
+\usepackage{lt_maths}
+\newcommand*{\printAffiliations}{}
+
+\title{Example article using \texttt{lt\_minimal} (0.2.0)}
+\author{A.~N.~Author, B.~N.~Author \& C.~N.~Author}
+\date{\today}
+
+\addbibresource{PlaceholderBibliography.bib}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\printAffiliations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract} % {{{
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.
+
+\end{abstract} % }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Section} % {{{
+\label{sec:Section}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+%------------------------------------------------------------------------------
+\subsection{Common Commands} % {{{
+
+\begin{itemize}
+
+    \item Abbreviations:
+        \eg \ie \cf \etc
+
+    \item Citations:
+        \textcite{Bayes};
+        \autocite{GravitationalWaves}.
+
+    \item Links:
+        \hurl{insecure-example.com};
+        \hsurl{secure-example.com};
+        \hiddenurl{mailto:}{email@example.com}{}.
+
+    \item Numbers \& units:
+        \num{12345};
+        \SI{67.8956}{\um/\s^2};
+        \SI{\approx 9999}{Hz};
+        \ang{90}.
+
+    \item Quotations:
+        \enquote{blah \enquote{blah}} blah.
+
+    \item References:
+        \Ref{Figure}{fig:Figure}.
+
+\end{itemize}
+
+% }}}
+%------------------------------------------------------------------------------
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\begin{figure}[htbp] % {{{
+\centering
+\includegraphics[width=0.45\linewidth]{PlaceholderImage.png}
+\caption{
+    Caption.
+}
+\label{fig:Figure}
+\end{figure} % }}}
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography {{{
+
+\newrefcontext[sorting=nyt]
+\printbibliography
+\newrefcontext[sorting=ynt]
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

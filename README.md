@@ -52,7 +52,7 @@ The simplified preamble should be something like the following:
 It should now be possible to use `make` as per the following:
 ```shell
 make pdf TEXENGINE="-pdf" file=<document.tex>  # latexmk option for pdflatex
-make html file=<document.tex>
+make html file=<document.tex>                  # Best to build PDF first
 make docx file=<document.tex> bibliography=<document.bib>
 ```
 
