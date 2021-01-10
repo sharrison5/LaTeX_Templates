@@ -1,0 +1,14 @@
+-- build.mk4
+-- Sam Harrison 2021
+-- MIT License: a full version of the license is included in the LICENSE file.
+
+-- Adds bibliography support to `make4ht` build process
+-- https://tex.stackexchange.com/a/570289
+
+-- Now built in
+-- Make:add("biber","biber ${input}")
+
+Make:htlatex {}
+Make:biber {}
+Make:htlatex {}
+Make:htlatex {}

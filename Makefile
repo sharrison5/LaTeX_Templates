@@ -46,6 +46,7 @@ pdf: check-file
 # Make HTML from .tex files via `htlatex`
 html: check-file
 	make4ht $(TEXTRAS) --format html5 --loglevel info \
+	    --build-file $(TEMPLATE_DIR)/build.mk4 \
 	    --output-dir $(file:.tex=/) $(file)
 
 # Make Word document from .tex files via `pandoc`
