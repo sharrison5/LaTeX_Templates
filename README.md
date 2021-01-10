@@ -20,9 +20,12 @@ make -f LaTeX_Templates/Makefile pdf [TEXTRAS="[-g|-gg] [-pv]"] file=<document.t
 make clean[er] file=<document.tex>
 
 # To compile the examples
-cd LateX_Templates/
-make pdf file=Examples/Article.tex
+cd LateX_Templates/Examples/
+./make_examples.sh
 ```
+
+The simplest way to get started is to copy one of the files from
+[`Templates/`](Templates/), or to have a look in [`Examples/`](Examples/).
 
 Note that to use the templates we need to set the `TEXINPUTS` variable so that
 the classes and style files can actually be found. This is done automatically
@@ -37,7 +40,9 @@ Using a stripped down article format, it is possible to produce either `.docx`
 files via [pandoc](https://pandoc.org/) (version >= 2.11, along with
 `pandoc-crossref`), or HTML via [TeX4ht](https://tug.org/tex4ht/).
 
-The simplified preamble should be something like the following:
+A complete example can be found in
+[`Examples/MinimalArticle.tex`](Examples/MinimalArticle.tex).
+In short, the simplified preamble should be something like the following:
 ```tex
 \documentclass[a4paper, 11pt]{article}
 \usepackage{lt_minimal}

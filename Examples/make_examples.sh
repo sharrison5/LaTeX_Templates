@@ -22,6 +22,8 @@ make -f ../Makefile docx \
 # HTML
 make -f ../Makefile html \
     file=MinimalArticle.tex
+make -f ../Makefile clean \
+    file=MinimalArticle.tex
 rm  MinimalArticle.4ct MinimalArticle.4tc MinimalArticle.css \
     MinimalArticle.dvi MinimalArticle.html MinimalArticle.idv \
     MinimalArticle.lg MinimalArticle.tmp MinimalArticle.xref

@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2021-01-11
+### Added
+ - `Examples/`: includes previous full article, as well as a minimal article
+   that can be compiled to other formats.
+ - `Templates/`: stripped down `.tex` files to use as starting points.
+
+### Changed
+ - Minor tweaks after more extensive use.
+
 ## [0.2.0] - 2020-06-05
 ### Added
  - Makefile to simplify build process.
@@ -19,7 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - First release. Contains style files, an article class, and a typeset
    template for said article class.
 
-[Unreleased]: https://github.com/sharrison5/LaTeX_Templates/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/sharrison5/LaTeX_Templates/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/sharrison5/LaTeX_Templates/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/sharrison5/LaTeX_Templates/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/sharrison5/LaTeX_Templates/releases/tag/v0.1.0
 
